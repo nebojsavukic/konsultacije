@@ -65,9 +65,9 @@ h1,h2,h3{font-family:var(--font-display);line-height:1.1;letter-spacing:-.02em}
   font-family:var(--font-display);font-weight:600;font-size:1rem;
   padding:15px 26px;border-radius:100px;border:1px solid transparent;
   cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;
-  white-space:nowrap;
+  white-space:normal;text-align:center;max-width:100%;
 }
-.btn svg{width:18px;height:18px}
+.btn svg{width:18px;height:18px;flex:none}
 .btn-primary{
   background:var(--green);color:#04241a;
   box-shadow:0 0 0 rgba(16,185,129,.5);
@@ -144,6 +144,7 @@ header.scrolled{border-color:var(--line);background:rgba(11,19,43,.85)}
 }
 .nav-links > a:hover{color:var(--white)}
 .nav-cta{display:flex;align-items:center;gap:14px;flex:none}
+.nav .btn{white-space:nowrap}
 .nav .btn{padding:11px 20px;font-size:.92rem}
 .burger{display:none;background:none;border:1px solid var(--line-strong);border-radius:10px;padding:9px;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--white);margin:4px 0;transition:.3s}
@@ -153,6 +154,7 @@ header.scrolled{border-color:var(--line);background:rgba(11,19,43,.85)}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
 .hero h1{
   font-size:clamp(1.9rem,4.6vw,3.3rem);font-weight:800;margin:22px 0 20px;
+  overflow-wrap:break-word;word-break:break-word;
 }
 .hero h1 .hl{color:var(--cyan)}
 .hero p.sub{font-size:clamp(1rem,1.6vw,1.18rem);color:var(--muted);max-width:580px;margin-bottom:32px}
@@ -550,8 +552,8 @@ body.cal-lock{overflow:hidden}
 .pr-name{font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--white);line-height:1.25}
 .pr-salon{font-size:.86rem;color:var(--muted-2)}
 .pr-cta-wrap{display:flex;justify-content:center}
-.btn-google{gap:12px}
-.btn-google svg{width:20px;height:20px}
+.btn-google{gap:12px;white-space:normal}
+.btn-google svg{width:20px;height:20px;flex:none}
 
 /* ============ RESPONSIVE ============ */
 /* Ispod 992px: hero i solver prelaze u JEDNU kolonu */
@@ -605,7 +607,12 @@ body.cal-lock{overflow:hidden}
 /* Hero vizual — proporcije na telefonu */
 @media (max-width:768px){
   .hero-visual{max-width:100%;min-height:0;height:auto}
-  .orb{position:relative;inset:auto;width:100%;padding:0 0 20px;min-height:440px}
+  /* Orb postaje normalan kontejner; poruke teku prirodno (bez apsolutnog preklapanja) */
+  .orb{position:relative;inset:auto;width:100%;min-height:0;padding:0 0 18px;display:flex;flex-direction:column}
+  .ig-topbar{position:relative;top:auto;left:auto;right:auto}
+  .chat{position:relative;left:auto;right:auto;top:auto;padding:16px 16px 0;gap:12px}
+  .booked{position:relative;left:auto;right:auto;bottom:auto;margin:16px 16px 0}
+  .bubble{max-width:88%}
 }
 
 @media (max-width:520px){
@@ -620,6 +627,29 @@ body.cal-lock{overflow:hidden}
   .wrap{padding:0 18px}
   .cal-overlay{padding:12px}
   .cal-modal{height:88vh}
+  .pr-card{padding:26px}
+  .review-form-wrap{padding:24px 20px}
+  .solver-box{padding:22px 18px}
+}
+
+/* Najmanji telefoni (≈320–400px): dodatno stezanje da ništa ne izlazi iz ekrana */
+@media (max-width:400px){
+  .wrap{padding:0 14px}
+  .hero h1{font-size:1.62rem}
+  .hero p.sub{font-size:.98rem}
+  .btn{font-size:.92rem;padding:14px 18px}
+  .brand{font-size:.95rem;gap:9px}
+  .brand .mark{width:32px;height:32px}
+  .nav{height:64px}
+  .nav-links.open{top:64px}
+  .hero-trust{gap:18px}
+  .hero-trust .num{font-size:1.3rem}
+  .section-head{margin-bottom:36px}
+  .pr-card,.card,.principle{padding:22px}
+  .booking-box{padding:24px 18px}
+  .cal-modal-head{padding:14px 16px}
+  .rating-input svg{width:26px;height:26px}
+  .bubble{font-size:.86rem}
 }
 </style>
 </head>
