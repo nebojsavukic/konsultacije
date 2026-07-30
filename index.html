@@ -149,6 +149,25 @@ header.scrolled{border-color:var(--line);background:rgba(11,19,43,.85)}
 .burger{display:none;background:none;border:1px solid var(--line-strong);border-radius:10px;padding:9px;cursor:pointer}
 .burger span{display:block;width:20px;height:2px;background:var(--white);margin:4px 0;transition:.3s}
 
+/* ============ LANGUAGE SWITCHER ============ */
+.lang-switch{
+  display:flex;align-items:center;gap:2px;flex:none;
+  font-family:var(--font-display);font-size:.85rem;font-weight:600;
+  padding:4px 8px;border:1px solid var(--line-strong);border-radius:100px;
+  background:rgba(255,255,255,.02);
+}
+.lang-switch button{
+  background:none;border:none;cursor:pointer;color:var(--muted-2);
+  font-family:inherit;font-size:.82rem;font-weight:600;letter-spacing:.02em;
+  padding:5px 9px;border-radius:100px;line-height:1;
+  transition:color .2s ease,background .2s ease;
+}
+.lang-switch button:hover{color:var(--white)}
+.lang-switch button.active{color:var(--cyan);background:var(--cyan-soft)}
+.lang-switch .sep{color:var(--muted-2);opacity:.4;font-weight:400;user-select:none}
+/* Mobilni jezički prekidač unutar otvorenog menija */
+.mobile-lang{display:none}
+
 /* ============ HERO ============ */
 .hero{padding:70px 0 40px;position:relative}
 .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
@@ -355,7 +374,8 @@ section{padding:84px 0}
 .booking-note b{color:var(--cyan);font-weight:600}
 
 /* ============ REVIEWS (moderacija) ============ */
-.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:56px}
+/* Struktura ostaje u kodu spremna za ručni unos budućih recenzija, ali je nevidljiva. */
+.reviews-grid{display:none;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:56px}
 .review{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
   padding:30px;display:flex;flex-direction:column;gap:16px;
@@ -557,6 +577,62 @@ body.cal-lock{overflow:hidden}
 .btn-google{gap:12px;white-space:normal}
 .btn-google svg{width:20px;height:20px;flex:none}
 
+/* ============ SISTEM NA DELU (zamena za social proof) ============ */
+.system{background:linear-gradient(180deg,transparent,rgba(16,185,129,.04),transparent)}
+.system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.sys-card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:36px 30px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.sys-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--cyan),var(--green));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s ease;
+}
+.sys-card:hover{transform:translateY(-6px);border-color:var(--line-strong);box-shadow:var(--shadow)}
+.sys-card:hover::before{transform:scaleX(1)}
+.sys-ico{
+  width:58px;height:58px;border-radius:15px;display:flex;align-items:center;justify-content:center;
+  background:var(--cyan-soft);border:1px solid rgba(0,194,255,.25);color:var(--cyan);
+}
+.sys-ico svg{width:28px;height:28px}
+.sys-step{
+  font-family:var(--font-display);font-weight:600;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--green);
+}
+.sys-card h3{font-size:1.25rem;font-weight:700}
+.sys-card p{color:var(--muted);font-size:.96rem;line-height:1.65}
+
+/* ============ GOOGLE RECENZIJE (poziv na akciju) ============ */
+.google-review{
+  max-width:720px;margin:56px auto 0;text-align:center;
+  background:var(--surface);border:1px solid var(--line-strong);border-radius:24px;
+  padding:clamp(30px,4vw,48px);box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.google-review::before{
+  content:"";position:absolute;top:-40%;right:-20%;width:60%;height:80%;
+  background:radial-gradient(circle,rgba(0,194,255,.14),transparent 65%);
+  filter:blur(10px);pointer-events:none;
+}
+.google-review .g-badge{
+  width:66px;height:66px;margin:0 auto 22px;border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  background:#fff;box-shadow:0 10px 30px -12px rgba(0,0,0,.6);position:relative;z-index:1;
+}
+.google-review .g-badge svg{width:34px;height:34px}
+.google-review .g-stars{display:flex;justify-content:center;gap:5px;margin-bottom:18px;position:relative;z-index:1}
+.google-review .g-stars svg{width:24px;height:24px;fill:#FFC107;filter:drop-shadow(0 0 6px rgba(255,193,7,.4))}
+.google-review h3{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;margin-bottom:12px;position:relative;z-index:1}
+.google-review p{color:var(--muted);font-size:1.05rem;max-width:480px;margin:0 auto 28px;position:relative;z-index:1}
+.google-review .btn{position:relative;z-index:1}
+.btn-google-review{
+  background:#fff;color:#1f2937;border:1px solid rgba(0,0,0,.08);gap:12px;white-space:normal;
+  box-shadow:0 10px 30px -14px rgba(0,0,0,.5);
+}
+.btn-google-review:hover{transform:translateY(-2px);box-shadow:0 16px 36px -14px rgba(0,0,0,.55)}
+.btn-google-review svg{width:22px;height:22px;flex:none}
+
 /* ============ RESPONSIVE ============ */
 /* Ispod 992px: hero i solver prelaze u JEDNU kolonu */
 @media (max-width:992px){
@@ -571,6 +647,7 @@ body.cal-lock{overflow:hidden}
   .principles{grid-template-columns:1fr}
   .reviews-grid{grid-template-columns:1fr}
   .pr-grid{grid-template-columns:1fr}
+  .system-grid{grid-template-columns:1fr}
   .insta-feed{grid-template-columns:repeat(4,1fr)}
   .nav-links{display:none}
   .nav-cta .btn-ghost{display:none}
@@ -592,6 +669,8 @@ body.cal-lock{overflow:hidden}
   .nav-links.open > a{padding:14px 0;border-bottom:1px solid var(--line);width:100%;color:var(--white)}
   .nav-links.open .mobile-cta{margin-top:14px;border-bottom:none}
   .nav-links.open .mobile-cta .btn{width:100%}
+  /* Jezički prekidač ostaje uvek vidljiv u headeru, i na mobilnom */
+  .nav-cta .lang-switch{display:flex}
 
   .hero h1{font-size:2rem}
   .hero-actions{flex-direction:column;align-items:stretch;width:100%}
@@ -670,18 +749,25 @@ body.cal-lock{overflow:hidden}
       <span class="handle">razgovaraj<b>sanebojsom</b></span>
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="#solver">Problemi</a>
-      <a href="#services">Usluge</a>
-      <a href="#method">Kako radim</a>
-      <a href="#reviews">Recenzije</a>
-      <a href="#faq">Pitanja</a>
-      <a href="#booking">Kontakt</a>
+      <a href="#solver" data-i18n="nav_problems">Problemi</a>
+      <a href="#services" data-i18n="nav_services">Usluge</a>
+      <a href="#method" data-i18n="nav_method">Kako radim</a>
+      <a href="#recenzije" data-i18n="nav_reviews">Recenzije</a>
+      <a href="#faq" data-i18n="nav_faq">Pitanja</a>
+      <a href="#booking" data-i18n="nav_contact">Kontakt</a>
       <div class="mobile-cta">
-        <a href="#booking" class="btn btn-primary" data-cal-trigger>Zakaži besplatnu analizu</a>
+        <a href="#booking" class="btn btn-primary" data-cal-trigger data-i18n="nav_cta">Zakaži besplatnu analizu</a>
       </div>
     </nav>
     <div class="nav-cta">
-      <a href="#booking" class="btn btn-primary" data-cal-trigger>Zakaži besplatnu analizu</a>
+      <a href="#booking" class="btn btn-primary" data-cal-trigger data-i18n="nav_cta">Zakaži besplatnu analizu</a>
+      <div class="lang-switch" role="group" aria-label="Izbor jezika / Language">
+        <button type="button" data-lang="sr" class="active" aria-label="Srpski">SR</button>
+        <span class="sep" aria-hidden="true">|</span>
+        <button type="button" data-lang="de" aria-label="Deutsch">DE</button>
+        <span class="sep" aria-hidden="true">|</span>
+        <button type="button" data-lang="en" aria-label="English">EN</button>
+      </div>
       <button class="burger" id="burger" aria-label="Meni" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -693,20 +779,20 @@ body.cal-lock{overflow:hidden}
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <span class="eyebrow"><span class="dot"></span>Digitalna rešenja za salone i estetske centre</span>
-      <h1>Popunite preostalih <span class="hl">30% kapaciteta salona</span> bez ijednog telefonskog poziva.</h1>
-      <p class="sub">Pomažem estetskim centrima i premium salonima da digitalizuju recepciju, automatizuju marketing i pretvore Instagram preglede u stalne, plaćene termine. Dok vi radite tretmane, sistem sam puni kalendar.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="hero_eyebrow">Digitalna rešenja za salone i estetske centre</span></span>
+      <h1 data-i18n-html="hero_title">Popunite preostalih <span class="hl">30% kapaciteta salona</span> bez ijednog telefonskog poziva.</h1>
+      <p class="sub" data-i18n="hero_sub">Pomažem estetskim centrima i premium salonima da digitalizuju recepciju, automatizuju marketing i pretvore Instagram preglede u stalne, plaćene termine. Dok vi radite tretmane, sistem sam puni kalendar.</p>
       <div class="hero-actions">
         <a href="#booking" class="btn btn-primary pulse" data-cal-trigger>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          Saznajte gde gubite termine (Besplatna analiza - 15min)
+          <span data-i18n="hero_cta_primary">Saznajte gde gubite termine (Besplatna analiza - 15min)</span>
         </a>
-        <a href="#solver" class="btn btn-ghost">Gde gubim novac?</a>
+        <a href="#solver" class="btn btn-ghost" data-i18n="hero_cta_ghost">Gde gubim novac?</a>
       </div>
       <div class="hero-trust">
-        <div class="item"><span class="num">24/7</span><span class="lbl">Automatski odgovori na DM</span></div>
-        <div class="item"><span class="num">0</span><span class="lbl">Propuštenih upita</span></div>
-        <div class="item"><span class="num">7 dana</span><span class="lbl">Do novog sajta</span></div>
+        <div class="item"><span class="num">24/7</span><span class="lbl" data-i18n="hero_trust_1">Automatski odgovori na DM</span></div>
+        <div class="item"><span class="num">0</span><span class="lbl" data-i18n="hero_trust_2">Propuštenih upita</span></div>
+        <div class="item"><span class="num" data-i18n="hero_trust_3_num">7 dana</span><span class="lbl" data-i18n="hero_trust_3">Do novog sajta</span></div>
       </div>
     </div>
     <div class="hero-visual" aria-hidden="true">
@@ -715,22 +801,22 @@ body.cal-lock{overflow:hidden}
           <div class="ig-ava">R</div>
           <div>
             <div class="ig-name">salon.klijent</div>
-            <div class="ig-sub">Aktivan(na) sada</div>
+            <div class="ig-sub" data-i18n="ig_active">Aktivan(na) sada</div>
           </div>
           <div class="ig-cam">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           </div>
         </div>
         <div class="chat" id="chatStream">
-          <div class="bubble in" id="msgIn">Ćao! Da li imate slobodan termin za petak u 17h za hidrafacial?<small>23:15</small></div>
+          <div class="bubble in" id="msgIn"><span data-i18n="ig_msg_in">Ćao! Da li imate slobodan termin za petak u 17h za hidrafacial?</span><small>23:15</small></div>
           <div class="typing-indicator" id="typing">
             <span></span><span></span><span></span>
           </div>
-          <div class="bubble out" id="msgOut">Ćao! Naravno. Kliknite ispod da izaberete termin i automatski potvrdite dolazak. 👇<span class="sig">— Bot Recepcija</span></div>
+          <div class="bubble out" id="msgOut"><span data-i18n="ig_msg_out">Ćao! Naravno. Kliknite ispod da izaberete termin i automatski potvrdite dolazak. 👇</span><span class="sig" data-i18n="ig_sig">— Bot Recepcija</span></div>
         </div>
         <div class="booked" id="booked">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
-          <div><b>Termin uspešno potvrđen!</b><span>Petak, 17:00h — Hidrafacial</span></div>
+          <div><b data-i18n="ig_booked_title">Termin uspešno potvrđen!</b><span data-i18n="ig_booked_sub">Petak, 17:00h — Hidrafacial</span></div>
         </div>
       </div>
     </div>
@@ -741,36 +827,36 @@ body.cal-lock{overflow:hidden}
 <section class="solver" id="solver">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Interaktivna analiza</span>
-      <h2>Gde tvoj salon gubi novac?</h2>
-      <p>Izaberi ono što ti najviše zvuči poznato. Odmah ti pokazujem konkretno rešenje.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="solver_eyebrow">Interaktivna analiza</span></span>
+      <h2 data-i18n="solver_title">Gde tvoj salon gubi novac?</h2>
+      <p data-i18n="solver_sub">Izaberi ono što ti najviše zvuči poznato. Odmah ti pokazujem konkretno rešenje.</p>
     </div>
     <div class="solver-box reveal">
       <div class="solver-grid">
         <div class="options" role="tablist" aria-label="Izaberi glavni problem">
           <button class="opt" data-sol="0" role="tab" aria-selected="false">
             <span class="idx">A</span>
-            <span>Imam preglede na mrežama, ali niko ne kupuje</span>
+            <span data-i18n="solver_opt_1">Imam preglede na mrežama, ali niko ne kupuje</span>
           </button>
           <button class="opt" data-sol="1" role="tab" aria-selected="false">
             <span class="idx">B</span>
-            <span>Klijenti nas stalno zovu telefonom, gubimo vreme na zakazivanje</span>
+            <span data-i18n="solver_opt_2">Klijenti nas stalno zovu telefonom, gubimo vreme na zakazivanje</span>
           </button>
           <button class="opt" data-sol="2" role="tab" aria-selected="false">
             <span class="idx">C</span>
-            <span>Sajt nam je star, spor ili ga nemamo</span>
+            <span data-i18n="solver_opt_3">Sajt nam je star, spor ili ga nemamo</span>
           </button>
         </div>
         <div class="solution" id="solution">
           <div class="placeholder" id="placeholder">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1V17h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"/></svg>
-            <p>Izaberi svoju situaciju levo — rešenje se pojavljuje ovde.</p>
+            <p data-i18n="solver_placeholder">Izaberi svoju situaciju levo — rešenje se pojavljuje ovde.</p>
           </div>
           <div class="sol-card" id="solCard" aria-live="polite">
             <span class="sol-tag" id="solTag">Rešenje</span>
             <h4 id="solTitle"></h4>
             <p id="solText"></p>
-            <a href="#booking" class="btn btn-primary" id="solBtn" data-cal-trigger>Zakaži termin za ovo rešenje</a>
+            <a href="#booking" class="btn btn-primary" id="solBtn" data-cal-trigger data-i18n="solver_btn">Zakaži termin za ovo rešenje</a>
           </div>
         </div>
       </div>
@@ -782,33 +868,33 @@ body.cal-lock{overflow:hidden}
 <section id="services">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Usluge</span>
-      <h2>Dva sistema koja donose termine</h2>
-      <p>Ne prodajem „marketing uopšteno". Postavljam dva konkretna sistema koja rade dok ti radiš svoj posao.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="services_eyebrow">Usluge</span></span>
+      <h2 data-i18n="services_title">Dva sistema koja donose termine</h2>
+      <p data-i18n="services_sub">Ne prodajem „marketing uopšteno". Postavljam dva konkretna sistema koja rade dok ti radiš svoj posao.</p>
     </div>
     <div class="cards">
       <div class="card reveal">
         <div class="ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"/></svg>
         </div>
-        <h3>Društvene mreže i DM sistemi</h3>
-        <p>Automatizacija poruka i komentara preko ManyChat integracije — da svaki upit postane rezervisan termin, i noću.</p>
+        <h3 data-i18n="services_1_title">Društvene mreže i DM sistemi</h3>
+        <p data-i18n="services_1_desc">Automatizacija poruka i komentara preko ManyChat integracije — da svaki upit postane rezervisan termin, i noću.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Automatski odgovori na DM i komentare</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>ManyChat tok koji vodi do zakazivanja</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Sadržaj koji pretvara pratioce u klijente</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="services_1_li1">Automatski odgovori na DM i komentare</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="services_1_li2">ManyChat tok koji vodi do zakazivanja</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="services_1_li3">Sadržaj koji pretvara pratioce u klijente</span></li>
         </ul>
       </div>
       <div class="card reveal">
         <div class="ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 8l-2 2 2 2M13 8l2 2-2 2"/></svg>
         </div>
-        <h3>Web dizajn i digitalno zakazivanje</h3>
-        <p>Moderan, brz sajt sa ugrađenim sistemom za rezervacije — klijenti zakazuju sami, bez jednog jedinog poziva.</p>
+        <h3 data-i18n="services_2_title">Web dizajn i digitalno zakazivanje</h3>
+        <p data-i18n="services_2_desc">Moderan, brz sajt sa ugrađenim sistemom za rezervacije — klijenti zakazuju sami, bez jednog jedinog poziva.</p>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Brz sajt optimizovan za mobilni</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Online zakazivanje 24/7</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Automatski podsetnici, manje otkazivanja</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="services_2_li1">Brz sajt optimizovan za mobilni</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="services_2_li2">Online zakazivanje 24/7</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="services_2_li3">Automatski podsetnici, manje otkazivanja</span></li>
         </ul>
       </div>
     </div>
@@ -819,25 +905,25 @@ body.cal-lock{overflow:hidden}
 <section id="method">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Kako radim</span>
-      <h2>Bez komplikacija. Samo rezultat.</h2>
-      <p>Tri principa po kojima postavljam svaki sistem — od prvog razgovora do prvog novog termina.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="method_eyebrow">Kako radim</span></span>
+      <h2 data-i18n="method_title">Bez komplikacija. Samo rezultat.</h2>
+      <p data-i18n="method_sub">Tri principa po kojima postavljam svaki sistem — od prvog razgovora do prvog novog termina.</p>
     </div>
     <div class="principles">
       <div class="principle reveal">
         <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div>
-        <h3>Brzo</h3>
-        <p>Prvi sistem je aktivan za nekoliko dana, ne meseci. Rezultat vidiš dok konkurencija još „razmišlja".</p>
+        <h3 data-i18n="method_1_title">Brzo</h3>
+        <p data-i18n="method_1_desc">Prvi sistem je aktivan za nekoliko dana, ne meseci. Rezultat vidiš dok konkurencija još „razmišlja".</p>
       </div>
       <div class="principle reveal">
         <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg></div>
-        <h3>Efikasno</h3>
-        <p>Svaki potez ima jasnu svrhu — više rezervacija, manje ručnog rada. Ništa suvišno, ništa „za lepotu".</p>
+        <h3 data-i18n="method_2_title">Efikasno</h3>
+        <p data-i18n="method_2_desc">Svaki potez ima jasnu svrhu — više rezervacija, manje ručnog rada. Ništa suvišno, ništa „za lepotu".</p>
       </div>
       <div class="principle reveal">
         <div class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h3>Prilagođeno budžetu</h3>
-        <p>Rešenje se pravi prema veličini tvog salona. Plaćaš ono što ti stvarno donosi termine — ništa više.</p>
+        <h3 data-i18n="method_3_title">Prilagođeno budžetu</h3>
+        <p data-i18n="method_3_desc">Rešenje se pravi prema veličini tvog salona. Plaćaš ono što ti stvarno donosi termine — ništa više.</p>
       </div>
     </div>
   </div>
@@ -847,9 +933,9 @@ body.cal-lock{overflow:hidden}
 <section id="reviews">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Recenzije klijenata</span>
-      <h2>Šta kažu vlasnici premium salona</h2>
-      <p>Prave izjave klijenata. Nove recenzije prolaze kroz moderaciju pre nego što se pojave ovde.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="revform_eyebrow">Recenzije klijenata</span></span>
+      <h2 data-i18n="revform_title">Šta kažu vlasnici premium salona</h2>
+      <p data-i18n="revform_sub">Prave izjave klijenata. Nove recenzije prolaze kroz moderaciju pre nego što se pojave ovde.</p>
     </div>
 
     <!-- Recenzije se dinamički renderuju iz JS niza `odobreneRecenzije` -->
@@ -857,8 +943,8 @@ body.cal-lock{overflow:hidden}
 
     <!-- Forma za nove recenzije (Web3Forms) -->
     <div class="review-form-wrap reveal">
-      <h3>Ostavi svoju recenziju</h3>
-      <p class="form-sub">Bio si moj klijent? Podeli iskustvo — objavljujem je nakon kratke provere.</p>
+      <h3 data-i18n="revform_form_title">Ostavi svoju recenziju</h3>
+      <p class="form-sub" data-i18n="revform_form_sub">Bio si moj klijent? Podeli iskustvo — objavljujem je nakon kratke provere.</p>
 
       <form id="reviewForm" novalidate>
         <!-- Web3Forms Access Key -->
@@ -871,12 +957,12 @@ body.cal-lock{overflow:hidden}
         <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <div class="field">
-          <label for="revName">Ime i prezime</label>
-          <input type="text" id="revName" name="ime" placeholder="npr. Milica Jovanović" autocomplete="name" required>
+          <label for="revName" data-i18n="revform_label_name">Ime i prezime</label>
+          <input type="text" id="revName" name="ime" placeholder="npr. Milica Jovanović" data-i18n-ph="revform_ph_name" autocomplete="name" required>
         </div>
 
         <div class="field">
-          <label>Ocena</label>
+          <label data-i18n="revform_label_rating">Ocena</label>
           <div class="rating-input" id="ratingInput" role="radiogroup" aria-label="Ocena od 1 do 5 zvezdica">
             <button type="button" data-val="1" aria-label="1 zvezdica"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
             <button type="button" data-val="2" aria-label="2 zvezdice"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
@@ -887,11 +973,11 @@ body.cal-lock{overflow:hidden}
         </div>
 
         <div class="field">
-          <label for="revText">Komentar</label>
-          <textarea id="revText" name="komentar" rows="4" placeholder="Opiši kako ti je saradnja pomogla..." required></textarea>
+          <label for="revText" data-i18n="revform_label_comment">Komentar</label>
+          <textarea id="revText" name="komentar" rows="4" placeholder="Opiši kako ti je saradnja pomogla..." data-i18n-ph="revform_ph_comment" required></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" id="reviewSubmit">Pošalji recenziju</button>
+        <button type="submit" class="btn btn-primary" id="reviewSubmit" data-i18n="revform_submit">Pošalji recenziju</button>
         <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
       </form>
     </div>
@@ -902,38 +988,38 @@ body.cal-lock{overflow:hidden}
 <section id="faq">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Najčešća pitanja</span>
-      <h2>Sve što te zanima pre poziva</h2>
-      <p>Kratki i jasni odgovori na pitanja koja salon vlasnici najčešće postavljaju.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="faq_eyebrow">Najčešća pitanja</span></span>
+      <h2 data-i18n="faq_title">Sve što te zanima pre poziva</h2>
+      <p data-i18n="faq_sub">Kratki i jasni odgovori na pitanja koja salon vlasnici najčešće postavljaju.</p>
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          Šta tačno dobijam kroz besplatne konsultacije?
+          <span data-i18n="faq_q1">Šta tačno dobijam kroz besplatne konsultacije?</span>
           <span class="plus" aria-hidden="true"></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Dobijate kompletno skeniranje vašeg trenutnog sajta i Instagram profila. Pokazaću vam tačno gde gubite klijente i dobićete 3 konkretna koraka kako da to odmah popravite — potpuno besplatno i bez ikakvih obaveza.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a1">Dobijate kompletno skeniranje vašeg trenutnog sajta i Instagram profila. Pokazaću vam tačno gde gubite klijente i dobićete 3 konkretna koraka kako da to odmah popravite — potpuno besplatno i bez ikakvih obaveza.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          Koliko košta izrada pametnog sajta i automatizacije?
+          <span data-i18n="faq_q2">Koliko košta izrada pametnog sajta i automatizacije?</span>
           <span class="plus" aria-hidden="true"></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Cena zavisi od veličine vašeg salona i kompleksnosti sistema koji ugrađujemo. Moje cene su maksimalno prilagođene lokalnim biznisima jer mi je cilj da vam se investicija vrati već u prvih mesec dana.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a2">Cena zavisi od veličine vašeg salona i kompleksnosti sistema koji ugrađujemo. Moje cene su maksimalno prilagođene lokalnim biznisima jer mi je cilj da vam se investicija vrati već u prvih mesec dana.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          Koliko brzo sistem može biti pušten u rad?
+          <span data-i18n="faq_q3">Koliko brzo sistem može biti pušten u rad?</span>
           <span class="plus" aria-hidden="true"></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Prva rešenja i osnovnu automatizaciju poruka možemo pokrenuti u roku od 48 sati, dok je kompletan premium sajt sa integrisanim kalendarom gotov za 7 do 10 dana.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a3">Prva rešenja i osnovnu automatizaciju poruka možemo pokrenuti u roku od 48 sati, dok je kompletan premium sajt sa integrisanim kalendarom gotov za 7 do 10 dana.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">
-          Da li moram sam da upravljam sistemom nakon izrade?
+          <span data-i18n="faq_q4">Da li moram sam da upravljam sistemom nakon izrade?</span>
           <span class="plus" aria-hidden="true"></span>
         </button>
-        <div class="faq-a"><div class="faq-a-inner">Ne. Kompletan sistem pravim po principu „ključ u ruke" i postavljam ga da radi potpuno automatski. Takođe, dobijate kratku i jednostavnu video obuku kako biste uvek imali potpunu kontrolu.</div></div>
+        <div class="faq-a"><div class="faq-a-inner" data-i18n="faq_a4">Ne. Kompletan sistem pravim po principu „ključ u ruke" i postavljam ga da radi potpuno automatski. Takođe, dobijate kratku i jednostavnu video obuku kako biste uvek imali potpunu kontrolu.</div></div>
       </div>
     </div>
   </div>
@@ -943,21 +1029,21 @@ body.cal-lock{overflow:hidden}
 <section class="booking" id="booking">
   <div class="wrap">
     <div class="booking-box reveal">
-      <span class="eyebrow"><span class="dot"></span>Besplatna analiza</span>
-      <h2>Popričajmo 15 minuta o tvom salonu</h2>
-      <p>Bez obaveze i bez prodajnih trikova. Pogledamo gde gubiš termine i dobiješ jasan plan — čak i ako ne budemo radili zajedno.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="booking_eyebrow">Besplatna analiza</span></span>
+      <h2 data-i18n="booking_title">Popričajmo 15 minuta o tvom salonu</h2>
+      <p data-i18n="booking_sub">Bez obaveze i bez prodajnih trikova. Pogledamo gde gubiš termine i dobiješ jasan plan — čak i ako ne budemo radili zajedno.</p>
       <div class="booking-bullets">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Potpuno besplatno</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Bez obaveze</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Konkretan plan na kraju poziva</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b1">Potpuno besplatno</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b2">Bez obaveze</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b3">Konkretan plan na kraju poziva</span></span>
       </div>
 
       <a href="#" class="btn btn-primary pulse" data-cal-trigger>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        Saznajte gde gubite termine (Besplatna analiza - 15min)
+        <span data-i18n="hero_cta_primary">Saznajte gde gubite termine (Besplatna analiza - 15min)</span>
       </a>
 
-      <p class="booking-note">Kalendar se učitava tek na klik — <b>sajt se otvara u 0ms.</b></p>
+      <p class="booking-note" data-i18n-html="booking_note">Kalendar se učitava tek na klik — <b>sajt se otvara u 0ms.</b></p>
     </div>
   </div>
 </section>
@@ -984,94 +1070,82 @@ body.cal-lock{overflow:hidden}
         <div class="ig-ic">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
         </div>
-        <h3>Dnevni biznis saveti za salone i estetske centre</h3>
-        <p>Konkretni saveti o marketingu, zakazivanju i rastu — svakog dana na mom profilu <span class="insta-handle">@razgovarajsanebojsom</span>.</p>
+        <h3 data-i18n="insta_title">Dnevni biznis saveti za salone i estetske centre</h3>
+        <p data-i18n-html="insta_desc">Konkretni saveti o marketingu, zakazivanju i rastu — svakog dana na mom profilu <span class="insta-handle">@razgovarajsanebojsom</span>.</p>
         <a href="https://instagram.com" class="btn btn-cyan btn-instagram-cta" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
-          Prati me na Instagramu za dnevne biznis savete
+          <span data-i18n="insta_cta">Prati me na Instagramu za dnevne biznis savete</span>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== PREMIUM RECENZIJE ===== -->
-<section class="premium-reviews" id="recenzije">
+<!-- ===== SISTEM NA DELU (zamena za social proof) ===== -->
+<section class="system" id="recenzije">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Svedočanstva</span>
-      <h2>Saloni koji su vratili kontrolu nad recepcijom</h2>
-      <p>Prave reči vlasnika kojima je sistem zakazivanja rešio haos na recepciji i popunio kalendar.</p>
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="system_eyebrow">Sistem na delu</span></span>
+      <h2 data-i18n="system_title">Kako sistem radi za tebe (24/7)</h2>
+      <p data-i18n="system_sub">Pogledaj unutrašnjost automatizacije koja menja recepciju.</p>
     </div>
 
-    <div class="pr-grid">
-      <div class="pr-card reveal">
-        <span class="pr-quotemark" aria-hidden="true">&ldquo;</span>
-        <div class="pr-stars" aria-label="5 od 5 zvezdica">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+    <div class="system-grid">
+      <div class="sys-card reveal">
+        <div class="sys-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h6v6H4zM14 14h6v6h-6zM7 10v4h10M17 14v-3"/></svg>
         </div>
-        <p class="pr-text">Recepcija nam je bila potpuni haos — telefon zvoni tokom tretmana, poruke se gube, termini se dupliraju. Otkako je sistem zakazivanja postavljen, klijentkinje same biraju termin, a kalendar je popunjen dve nedelje unapred. Prvi put radim mirno, bez osećaja da mi nešto stalno izmiče.</p>
-        <div class="pr-who">
-          <div class="pr-avatar">JA</div>
-          <div>
-            <div class="pr-name">Jovana Antić</div>
-            <div class="pr-salon">Aura Aesthetic Center · Beograd</div>
-          </div>
-        </div>
+        <span class="sys-step" data-i18n="system_1_step">Korak 01</span>
+        <h3 data-i18n="system_1_title">Pametni tok (ManyChat)</h3>
+        <p data-i18n="system_1_desc">Vizuelna mapa poruka koja vodi klijenta od prvog DM-a do potvrđenog termina.</p>
       </div>
 
-      <div class="pr-card reveal">
-        <span class="pr-quotemark" aria-hidden="true">&ldquo;</span>
-        <div class="pr-stars" aria-label="5 od 5 zvezdica">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+      <div class="sys-card reveal">
+        <div class="sys-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
         </div>
-        <p class="pr-text">Najviše me mučilo što smo gubili klijente koji pišu uveče, kad nema ko da odgovori. Sada sistem odmah nudi slobodne termine i potvrđuje dolazak, čak i u ponoć. Popunili smo one prazne prepodnevne termine koje ranije niko nije stizao da zakaže — a broj otkazivanja je prepolovljen.</p>
-        <div class="pr-who">
-          <div class="pr-avatar">MK</div>
-          <div>
-            <div class="pr-name">Marija Kovačević</div>
-            <div class="pr-salon">Lumière Beauty Lounge · Novi Sad</div>
-          </div>
-        </div>
+        <span class="sys-step" data-i18n="system_2_step">Korak 02</span>
+        <h3 data-i18n="system_2_title">Instant kalendar</h3>
+        <p data-i18n="system_2_desc">Sinhronizovan raspored koji klijentima prikazuje samo slobodne sate bez preklapanja.</p>
       </div>
 
-      <div class="pr-card reveal">
-        <span class="pr-quotemark" aria-hidden="true">&ldquo;</span>
-        <div class="pr-stars" aria-label="5 od 5 zvezdica">
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+      <div class="sys-card reveal">
+        <div class="sys-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
         </div>
-        <p class="pr-text">Kao centar sa četiri kozmetičarke, imali smo stalne sudare u rasporedu i nervozne klijente. Sistem sada sve usklađuje automatski i šalje podsetnike dan ranije. Recepcija je konačno tiha, devojke se bave tretmanima, a mesečni prihod je porastao jer nijedan termin više ne ostaje prazan.</p>
-        <div class="pr-who">
-          <div class="pr-avatar">DP</div>
-          <div>
-            <div class="pr-name">Dragana Popović</div>
-            <div class="pr-salon">Skin Republic Aesthetics · Niš</div>
-          </div>
-        </div>
+        <span class="sys-step" data-i18n="system_3_step">Korak 03</span>
+        <h3 data-i18n="system_3_title">Automatski podsetnik</h3>
+        <p data-i18n="system_3_desc">Sistem sam šalje SMS/WhatsApp podsetnik 24h ranije i smanjuje otkazivanja.</p>
       </div>
     </div>
 
-    <div class="pr-cta-wrap reveal">
-      <a href="#" class="btn btn-ghost btn-google" target="_blank" rel="noopener noreferrer">
+    <!-- ===== GOOGLE RECENZIJE ===== -->
+    <div class="google-review reveal">
+      <div class="g-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+        </svg>
+      </div>
+      <div class="g-stars" aria-label="5/5">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+      </div>
+      <h3 data-i18n="google_title">Da li smo već sarađivali?</h3>
+      <p data-i18n="google_sub">Podelite vaše iskustvo sa drugima.</p>
+      <a href="https://g.page/r/CdHMOVYriTV3EBM/review" class="btn btn-google-review" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
           <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
           <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>
           <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
         </svg>
-        Ostavi recenziju na Google-u
+        <span data-i18n="google_btn">Ostavi recenziju na Google-u</span>
       </a>
     </div>
   </div>
@@ -1089,7 +1163,7 @@ body.cal-lock{overflow:hidden}
       </svg>
       <span class="handle">razgovaraj<b>sanebojsom</b></span>
     </a>
-    <p>© <span id="year"></span> razgovarajsanebojsom · Digitalna rešenja za salone i estetske centre</p>
+    <p>© <span id="year"></span> razgovarajsanebojsom · <span data-i18n="footer_tagline">Digitalna rešenja za salone i estetske centre</span></p>
   </div>
 </footer>
 
@@ -1098,7 +1172,7 @@ body.cal-lock{overflow:hidden}
   <div class="cal-modal">
     <div class="cal-modal-head">
       <span class="dot"></span>
-      <b>Izaberi svoj termin</b>
+      <b data-i18n="cal_head">Izaberi svoj termin</b>
       <button class="cal-close" id="calClose" aria-label="Zatvori kalendar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
@@ -1106,7 +1180,7 @@ body.cal-lock{overflow:hidden}
     <div class="cal-embed" id="calEmbed">
       <div class="cal-loading" id="calLoading">
         <div class="cal-spinner"></div>
-        <span>Učitavam kalendar...</span>
+        <span data-i18n="cal_loading">Učitavam kalendar...</span>
       </div>
     </div>
   </div>
@@ -1117,43 +1191,391 @@ body.cal-lock{overflow:hidden}
   "use strict";
 
   /* =========================================================
+     0) TROJEZIČNOST (SR / DE / EN) — klijentski i18n engine
+     ---------------------------------------------------------
+     Prevod se dešava trenutno, bez osvežavanja stranice.
+     Ključevi odgovaraju atributima data-i18n na elementima.
+     - data-i18n       -> menja textContent
+     - data-i18n-html  -> menja innerHTML (za tekst sa <b>/<span>)
+     - data-i18n-ph    -> menja placeholder polja
+     ========================================================= */
+  var I18N = {
+    sr: {
+      /* Navigacija */
+      nav_problems:"Problemi", nav_services:"Usluge", nav_method:"Kako radim",
+      nav_reviews:"Recenzije", nav_faq:"Pitanja", nav_contact:"Kontakt",
+      nav_cta:"Zakaži besplatnu analizu",
+      /* Hero */
+      hero_eyebrow:"Digitalna rešenja za salone i estetske centre",
+      hero_title:'Popunite preostalih <span class="hl">30% kapaciteta salona</span> bez ijednog telefonskog poziva.',
+      hero_sub:"Pomažem estetskim centrima i premium salonima da digitalizuju recepciju, automatizuju marketing i pretvore Instagram preglede u stalne, plaćene termine. Dok vi radite tretmane, sistem sam puni kalendar.",
+      hero_cta_primary:"Saznajte gde gubite termine (Besplatna analiza - 15min)",
+      hero_cta_ghost:"Gde gubim novac?",
+      hero_trust_1:"Automatski odgovori na DM", hero_trust_2:"Propuštenih upita",
+      hero_trust_3_num:"7 dana", hero_trust_3:"Do novog sajta",
+      /* Hero vizual (Instagram DM) */
+      ig_active:"Aktivan(na) sada",
+      ig_msg_in:"Ćao! Da li imate slobodan termin za petak u 17h za hidrafacial?",
+      ig_msg_out:"Ćao! Naravno. Kliknite ispod da izaberete termin i automatski potvrdite dolazak. 👇",
+      ig_sig:"— Bot Recepcija",
+      ig_booked_title:"Termin uspešno potvrđen!", ig_booked_sub:"Petak, 17:00h — Hidrafacial",
+      /* Solver */
+      solver_eyebrow:"Interaktivna analiza", solver_title:"Gde tvoj salon gubi novac?",
+      solver_sub:"Izaberi ono što ti najviše zvuči poznato. Odmah ti pokazujem konkretno rešenje.",
+      solver_opt_1:"Imam preglede na mrežama, ali niko ne kupuje",
+      solver_opt_2:"Klijenti nas stalno zovu telefonom, gubimo vreme na zakazivanje",
+      solver_opt_3:"Sajt nam je star, spor ili ga nemamo",
+      solver_placeholder:"Izaberi svoju situaciju levo — rešenje se pojavljuje ovde.",
+      solver_btn:"Zakaži termin za ovo rešenje",
+      sol_0_tag:"Rešenje · Konverzija", sol_0_title:"DM automatizacija koja pretvara preglede u klijente",
+      sol_0_text:"Postavljamo pametan tok poruka na Instagramu: svaki komentar i DM dobija trenutan odgovor koji vodi pravo do zakazivanja. Pregledi prestaju da budu samo brojka — postaju termini.",
+      sol_1_tag:"Rešenje · Automatizacija", sol_1_title:"Pametan kalendar i online zakazivanje",
+      sol_1_text:"Klijenti sami biraju termin preko sajta ili DM-a, 24 sata dnevno. Ti prestaješ da odgovaraš na pozive tokom tretmana, a automatski podsetnici smanjuju otkazivanja.",
+      sol_2_tag:"Rešenje · Web", sol_2_title:"Nov, brz sajt sa ugrađenim zakazivanjem",
+      sol_2_text:"Pravim moderan sajt optimizovan za mobilni, koji se učitava za sekundu i vodi posetioca direktno do rezervacije. Profesionalan prvi utisak koji gradi poverenje pre prvog razgovora.",
+      /* Usluge */
+      services_eyebrow:"Usluge", services_title:"Dva sistema koja donose termine",
+      services_sub:'Ne prodajem „marketing uopšteno". Postavljam dva konkretna sistema koja rade dok ti radiš svoj posao.',
+      services_1_title:"Društvene mreže i DM sistemi",
+      services_1_desc:"Automatizacija poruka i komentara preko ManyChat integracije — da svaki upit postane rezervisan termin, i noću.",
+      services_1_li1:"Automatski odgovori na DM i komentare",
+      services_1_li2:"ManyChat tok koji vodi do zakazivanja",
+      services_1_li3:"Sadržaj koji pretvara pratioce u klijente",
+      services_2_title:"Web dizajn i digitalno zakazivanje",
+      services_2_desc:"Moderan, brz sajt sa ugrađenim sistemom za rezervacije — klijenti zakazuju sami, bez jednog jedinog poziva.",
+      services_2_li1:"Brz sajt optimizovan za mobilni",
+      services_2_li2:"Online zakazivanje 24/7",
+      services_2_li3:"Automatski podsetnici, manje otkazivanja",
+      /* Metodologija */
+      method_eyebrow:"Kako radim", method_title:"Bez komplikacija. Samo rezultat.",
+      method_sub:"Tri principa po kojima postavljam svaki sistem — od prvog razgovora do prvog novog termina.",
+      method_1_title:"Brzo", method_1_desc:'Prvi sistem je aktivan za nekoliko dana, ne meseci. Rezultat vidiš dok konkurencija još „razmišlja".',
+      method_2_title:"Efikasno", method_2_desc:'Svaki potez ima jasnu svrhu — više rezervacija, manje ručnog rada. Ništa suvišno, ništa „za lepotu".',
+      method_3_title:"Prilagođeno budžetu", method_3_desc:"Rešenje se pravi prema veličini tvog salona. Plaćaš ono što ti stvarno donosi termine — ništa više.",
+      /* Sistem na delu */
+      system_eyebrow:"Sistem na delu", system_title:"Kako sistem radi za tebe (24/7)",
+      system_sub:"Pogledaj unutrašnjost automatizacije koja menja recepciju.",
+      system_1_step:"Korak 01", system_1_title:"Pametni tok (ManyChat)",
+      system_1_desc:"Vizuelna mapa poruka koja vodi klijenta od prvog DM-a do potvrđenog termina.",
+      system_2_step:"Korak 02", system_2_title:"Instant kalendar",
+      system_2_desc:"Sinhronizovan raspored koji klijentima prikazuje samo slobodne sate bez preklapanja.",
+      system_3_step:"Korak 03", system_3_title:"Automatski podsetnik",
+      system_3_desc:"Sistem sam šalje SMS/WhatsApp podsetnik 24h ranije i smanjuje otkazivanja.",
+      /* Google recenzije */
+      google_title:"Da li smo već sarađivali?",
+      google_sub:"Podelite vaše iskustvo sa drugima.",
+      google_btn:"Ostavi recenziju na Google-u",
+      /* Recenzije (moderacija) — head + forma */
+      revform_eyebrow:"Recenzije klijenata", revform_title:"Šta kažu vlasnici premium salona",
+      revform_sub:"Prave izjave klijenata. Nove recenzije prolaze kroz moderaciju pre nego što se pojave ovde.",
+      revform_form_title:"Ostavi svoju recenziju",
+      revform_form_sub:"Bio si moj klijent? Podeli iskustvo — objavljujem je nakon kratke provere.",
+      revform_label_name:"Ime i prezime", revform_ph_name:"npr. Milica Jovanović",
+      revform_label_rating:"Ocena",
+      revform_label_comment:"Komentar", revform_ph_comment:"Opiši kako ti je saradnja pomogla...",
+      revform_submit:"Pošalji recenziju",
+      msg_validation:"Molim te popuni ime, ocenu i komentar pre slanja.",
+      msg_sending:"Šaljem...",
+      msg_success:"Hvala vam! Vaša recenzija je poslata na moderaciju i biće vidljiva nakon provere administratora.",
+      msg_fail:"Ups, slanje nije uspelo. Pokušajte ponovo za koji trenutak.",
+      msg_error:"Ups, došlo je do greške u vezi. Proverite internet i pokušajte ponovo.",
+      /* FAQ */
+      faq_eyebrow:"Najčešća pitanja", faq_title:"Sve što te zanima pre poziva",
+      faq_sub:"Kratki i jasni odgovori na pitanja koja salon vlasnici najčešće postavljaju.",
+      faq_q1:"Šta tačno dobijam kroz besplatne konsultacije?",
+      faq_a1:"Dobijate kompletno skeniranje vašeg trenutnog sajta i Instagram profila. Pokazaću vam tačno gde gubite klijente i dobićete 3 konkretna koraka kako da to odmah popravite — potpuno besplatno i bez ikakvih obaveza.",
+      faq_q2:"Koliko košta izrada pametnog sajta i automatizacije?",
+      faq_a2:"Cena zavisi od veličine vašeg salona i kompleksnosti sistema koji ugrađujemo. Moje cene su maksimalno prilagođene lokalnim biznisima jer mi je cilj da vam se investicija vrati već u prvih mesec dana.",
+      faq_q3:"Koliko brzo sistem može biti pušten u rad?",
+      faq_a3:"Prva rešenja i osnovnu automatizaciju poruka možemo pokrenuti u roku od 48 sati, dok je kompletan premium sajt sa integrisanim kalendarom gotov za 7 do 10 dana.",
+      faq_q4:"Da li moram sam da upravljam sistemom nakon izrade?",
+      faq_a4:'Ne. Kompletan sistem pravim po principu „ključ u ruke" i postavljam ga da radi potpuno automatski. Takođe, dobijate kratku i jednostavnu video obuku kako biste uvek imali potpunu kontrolu.',
+      /* Booking */
+      booking_eyebrow:"Besplatna analiza", booking_title:"Popričajmo 15 minuta o tvom salonu",
+      booking_sub:"Bez obaveze i bez prodajnih trikova. Pogledamo gde gubiš termine i dobiješ jasan plan — čak i ako ne budemo radili zajedno.",
+      booking_b1:"Potpuno besplatno", booking_b2:"Bez obaveze", booking_b3:"Konkretan plan na kraju poziva",
+      booking_note:"Kalendar se učitava tek na klik — <b>sajt se otvara u 0ms.</b>",
+      /* Instagram */
+      insta_title:"Dnevni biznis saveti za salone i estetske centre",
+      insta_desc:'Konkretni saveti o marketingu, zakazivanju i rastu — svakog dana na mom profilu <span class="insta-handle">@razgovarajsanebojsom</span>.',
+      insta_cta:"Prati me na Instagramu za dnevne biznis savete",
+      /* Footer + Cal */
+      footer_tagline:"Digitalna rešenja za salone i estetske centre",
+      cal_head:"Izaberi svoj termin", cal_loading:"Učitavam kalendar..."
+    },
+
+    de: {
+      nav_problems:"Probleme", nav_services:"Leistungen", nav_method:"Arbeitsweise",
+      nav_reviews:"Bewertungen", nav_faq:"Fragen", nav_contact:"Kontakt",
+      nav_cta:"Kostenlose Analyse buchen",
+      hero_eyebrow:"Digitale Lösungen für Salons und Kosmetikstudios",
+      hero_title:'Füllen Sie die restlichen <span class="hl">30% Ihrer Salonkapazität</span> – ganz ohne Telefonate.',
+      hero_sub:"Ich helfe Premium-Salons und Kosmetikstudios, ihre Rezeption zu digitalisieren, das Marketing zu automatisieren und Instagram-Views in gebuchte Termine zu verwandeln.",
+      hero_cta_primary:"Wo verliere ich Umsatz? (Kostenlose Analyse – 15 Min)",
+      hero_cta_ghost:"Wo verliere ich Umsatz?",
+      hero_trust_1:"Automatische DM-Antworten", hero_trust_2:"Verpasste Anfragen",
+      hero_trust_3_num:"7 Tage", hero_trust_3:"Bis zur neuen Website",
+      ig_active:"Jetzt aktiv",
+      ig_msg_in:"Hallo! Haben Sie am Freitag um 17 Uhr einen freien Termin für ein Hydrafacial?",
+      ig_msg_out:"Hallo! Natürlich. Tippen Sie unten, um Ihren Termin zu wählen und automatisch zu bestätigen. 👇",
+      ig_sig:"— Rezeptions-Bot",
+      ig_booked_title:"Termin erfolgreich bestätigt!", ig_booked_sub:"Freitag, 17:00 Uhr — Hydrafacial",
+      solver_eyebrow:"Interaktive Analyse", solver_title:"Wo verliert Ihr Salon Geld?",
+      solver_sub:"Wählen Sie, was Ihnen am bekanntesten vorkommt. Ich zeige Ihnen sofort die konkrete Lösung.",
+      solver_opt_1:"Ich habe Reichweite in den sozialen Medien, aber niemand bucht",
+      solver_opt_2:"Kunden rufen ständig an, wir verlieren Zeit mit der Terminvergabe",
+      solver_opt_3:"Unsere Website ist alt, langsam – oder wir haben keine",
+      solver_placeholder:"Wählen Sie links Ihre Situation – die Lösung erscheint hier.",
+      solver_btn:"Termin für diese Lösung buchen",
+      sol_0_tag:"Lösung · Conversion", sol_0_title:"DM-Automatisierung, die Views in Kunden verwandelt",
+      sol_0_text:"Wir richten einen smarten Nachrichtenfluss auf Instagram ein: Jeder Kommentar und jede DM erhält eine sofortige Antwort, die direkt zur Buchung führt. Views bleiben nicht nur eine Zahl – sie werden zu Terminen.",
+      sol_1_tag:"Lösung · Automatisierung", sol_1_title:"Smarter Kalender und Online-Buchung",
+      sol_1_text:"Kunden wählen ihren Termin selbst über die Website oder per DM – rund um die Uhr. Sie beantworten keine Anrufe mehr während der Behandlung, und automatische Erinnerungen reduzieren Absagen.",
+      sol_2_tag:"Lösung · Web", sol_2_title:"Neue, schnelle Website mit integrierter Buchung",
+      sol_2_text:"Ich erstelle eine moderne, für Mobilgeräte optimierte Website, die in Sekunden lädt und Besucher direkt zur Buchung führt. Ein professioneller erster Eindruck, der Vertrauen schafft – noch vor dem ersten Gespräch.",
+      services_eyebrow:"Leistungen", services_title:"Zwei Systeme, die Termine bringen",
+      services_sub:'Ich verkaufe kein „Marketing im Allgemeinen". Ich richte zwei konkrete Systeme ein, die arbeiten, während Sie Ihre Arbeit machen.',
+      services_1_title:"Social Media & DM-Systeme",
+      services_1_desc:"Automatisierung von Nachrichten und Kommentaren über ManyChat – damit jede Anfrage zum gebuchten Termin wird, auch nachts.",
+      services_1_li1:"Automatische Antworten auf DMs und Kommentare",
+      services_1_li2:"ManyChat-Fluss, der zur Buchung führt",
+      services_1_li3:"Content, der Follower in Kunden verwandelt",
+      services_2_title:"Webdesign & digitale Terminbuchung",
+      services_2_desc:"Eine moderne, schnelle Website mit integriertem Buchungssystem – Kunden buchen selbst, ohne einen einzigen Anruf.",
+      services_2_li1:"Schnelle, für Mobilgeräte optimierte Website",
+      services_2_li2:"Online-Buchung rund um die Uhr",
+      services_2_li3:"Automatische Erinnerungen, weniger Absagen",
+      method_eyebrow:"Arbeitsweise", method_title:"Keine Komplikationen. Nur Ergebnisse.",
+      method_sub:"Drei Prinzipien, nach denen ich jedes System aufbaue – vom ersten Gespräch bis zum ersten neuen Termin.",
+      method_1_title:"Schnell", method_1_desc:'Das erste System läuft in wenigen Tagen, nicht Monaten. Sie sehen Ergebnisse, während die Konkurrenz noch „nachdenkt".',
+      method_2_title:"Effizient", method_2_desc:'Jeder Schritt hat einen klaren Zweck – mehr Buchungen, weniger Handarbeit. Nichts Überflüssiges, nichts „nur zur Zierde".',
+      method_3_title:"An Ihr Budget angepasst", method_3_desc:"Die Lösung wird auf die Größe Ihres Salons zugeschnitten. Sie zahlen für das, was Ihnen wirklich Termine bringt – nicht mehr.",
+      system_eyebrow:"System in Aktion", system_title:"Wie das System für Sie arbeitet (24/7)",
+      system_sub:"Werfen Sie einen Blick in die Automatisierung, die Ihre Rezeption verändert.",
+      system_1_step:"Schritt 01", system_1_title:"Smarter Flow (ManyChat)",
+      system_1_desc:"Eine visuelle Nachrichten-Map, die den Kunden von der ersten DM bis zum bestätigten Termin führt.",
+      system_2_step:"Schritt 02", system_2_title:"Sofort-Kalender",
+      system_2_desc:"Ein synchronisierter Zeitplan, der Kunden nur freie Zeiten ohne Überschneidungen anzeigt.",
+      system_3_step:"Schritt 03", system_3_title:"Automatische Erinnerung",
+      system_3_desc:"Das System sendet 24 Stunden vorher automatisch eine SMS/WhatsApp-Erinnerung und reduziert Absagen.",
+      google_title:"Haben wir bereits zusammengearbeitet?",
+      google_sub:"Teilen Sie Ihre Erfahrung mit anderen.",
+      google_btn:"Bewertung auf Google hinterlassen",
+      revform_eyebrow:"Kundenbewertungen", revform_title:"Was Inhaber von Premium-Salons sagen",
+      revform_sub:"Echte Kundenstimmen. Neue Bewertungen werden vor der Veröffentlichung geprüft.",
+      revform_form_title:"Hinterlassen Sie Ihre Bewertung",
+      revform_form_sub:"Waren Sie mein Kunde? Teilen Sie Ihre Erfahrung – ich veröffentliche sie nach einer kurzen Prüfung.",
+      revform_label_name:"Vor- und Nachname", revform_ph_name:"z. B. Anna Müller",
+      revform_label_rating:"Bewertung",
+      revform_label_comment:"Kommentar", revform_ph_comment:"Beschreiben Sie, wie die Zusammenarbeit geholfen hat...",
+      revform_submit:"Bewertung senden",
+      msg_validation:"Bitte füllen Sie Name, Bewertung und Kommentar aus.",
+      msg_sending:"Wird gesendet...",
+      msg_success:"Vielen Dank! Ihre Bewertung wurde zur Prüfung gesendet und erscheint nach der Freigabe.",
+      msg_fail:"Hoppla, das Senden ist fehlgeschlagen. Bitte versuchen Sie es gleich erneut.",
+      msg_error:"Hoppla, es gab einen Verbindungsfehler. Prüfen Sie Ihr Internet und versuchen Sie es erneut.",
+      faq_eyebrow:"Häufige Fragen", faq_title:"Alles, was Sie vor dem Gespräch wissen möchten",
+      faq_sub:"Kurze und klare Antworten auf die Fragen, die Saloninhaber am häufigsten stellen.",
+      faq_q1:"Was genau bekomme ich in der kostenlosen Beratung?",
+      faq_a1:"Sie erhalten einen kompletten Scan Ihrer aktuellen Website und Ihres Instagram-Profils. Ich zeige Ihnen genau, wo Sie Kunden verlieren, und Sie bekommen 3 konkrete Schritte, um das sofort zu beheben – völlig kostenlos und unverbindlich.",
+      faq_q2:"Was kostet eine smarte Website mit Automatisierung?",
+      faq_a2:"Der Preis hängt von der Größe Ihres Salons und der Komplexität des Systems ab. Meine Preise sind optimal an lokale Betriebe angepasst, denn mein Ziel ist, dass sich Ihre Investition schon im ersten Monat auszahlt.",
+      faq_q3:"Wie schnell kann das System live gehen?",
+      faq_a3:"Erste Lösungen und die grundlegende Nachrichten-Automatisierung können wir innerhalb von 48 Stunden starten, während eine komplette Premium-Website mit integriertem Kalender in 7 bis 10 Tagen fertig ist.",
+      faq_q4:"Muss ich das System nach der Einrichtung selbst verwalten?",
+      faq_a4:'Nein. Ich baue das komplette System schlüsselfertig auf, sodass es vollautomatisch läuft. Außerdem erhalten Sie eine kurze, einfache Video-Schulung, damit Sie stets die volle Kontrolle behalten.',
+      booking_eyebrow:"Kostenlose Analyse", booking_title:"Sprechen wir 15 Minuten über Ihren Salon",
+      booking_sub:"Unverbindlich und ohne Verkaufstricks. Wir schauen, wo Sie Termine verlieren, und Sie erhalten einen klaren Plan – auch wenn wir nicht zusammenarbeiten.",
+      booking_b1:"Völlig kostenlos", booking_b2:"Unverbindlich", booking_b3:"Konkreter Plan am Ende des Gesprächs",
+      booking_note:"Der Kalender lädt erst beim Klick — <b>die Seite öffnet in 0 ms.</b>",
+      insta_title:"Tägliche Business-Tipps für Salons und Kosmetikstudios",
+      insta_desc:'Konkrete Tipps zu Marketing, Terminvergabe und Wachstum — jeden Tag auf meinem Profil <span class="insta-handle">@razgovarajsanebojsom</span>.',
+      insta_cta:"Folgen Sie mir auf Instagram für tägliche Business-Tipps",
+      footer_tagline:"Digitale Lösungen für Salons und Kosmetikstudios",
+      cal_head:"Wählen Sie Ihren Termin", cal_loading:"Kalender wird geladen..."
+    },
+
+    en: {
+      nav_problems:"Problems", nav_services:"Services", nav_method:"How I work",
+      nav_reviews:"Reviews", nav_faq:"FAQ", nav_contact:"Contact",
+      nav_cta:"Book a free analysis",
+      hero_eyebrow:"Digital solutions for salons and aesthetic centers",
+      hero_title:"Fill the remaining <span class=\"hl\">30% of your salon's capacity</span> without a single phone call.",
+      hero_sub:"I help beauty salons and aesthetic centers digitalize their reception, automate marketing, and turn Instagram views into paid appointments.",
+      hero_cta_primary:"Where am I losing money? (Free 15-min Analysis)",
+      hero_cta_ghost:"Where am I losing money?",
+      hero_trust_1:"Automated DM replies", hero_trust_2:"Missed inquiries",
+      hero_trust_3_num:"7 days", hero_trust_3:"To a new website",
+      ig_active:"Active now",
+      ig_msg_in:"Hi! Do you have a free slot this Friday at 5pm for a hydrafacial?",
+      ig_msg_out:"Hi! Of course. Tap below to pick your slot and confirm automatically. 👇",
+      ig_sig:"— Reception Bot",
+      ig_booked_title:"Appointment confirmed!", ig_booked_sub:"Friday, 5:00pm — Hydrafacial",
+      solver_eyebrow:"Interactive analysis", solver_title:"Where is your salon losing money?",
+      solver_sub:"Pick what sounds most familiar. I'll show you the concrete solution right away.",
+      solver_opt_1:"I get views on social media, but no one books",
+      solver_opt_2:"Clients keep calling us, we waste time on scheduling",
+      solver_opt_3:"Our website is old, slow, or we don't have one",
+      solver_placeholder:"Pick your situation on the left — the solution appears here.",
+      solver_btn:"Book an appointment for this solution",
+      sol_0_tag:"Solution · Conversion", sol_0_title:"DM automation that turns views into clients",
+      sol_0_text:"We set up a smart message flow on Instagram: every comment and DM gets an instant reply that leads straight to booking. Views stop being just a number — they become appointments.",
+      sol_1_tag:"Solution · Automation", sol_1_title:"Smart calendar and online booking",
+      sol_1_text:"Clients pick their own slot via the website or DM, 24 hours a day. You stop answering calls during treatments, and automatic reminders reduce cancellations.",
+      sol_2_tag:"Solution · Web", sol_2_title:"A new, fast website with built-in booking",
+      sol_2_text:"I build a modern, mobile-optimized website that loads in a second and leads visitors straight to booking. A professional first impression that builds trust before the first conversation.",
+      services_eyebrow:"Services", services_title:"Two systems that bring in appointments",
+      services_sub:'I don\'t sell "marketing in general." I set up two concrete systems that work while you do your job.',
+      services_1_title:"Social media & DM systems",
+      services_1_desc:"Automation of messages and comments via ManyChat — so every inquiry becomes a booked appointment, even at night.",
+      services_1_li1:"Automated replies to DMs and comments",
+      services_1_li2:"A ManyChat flow that leads to booking",
+      services_1_li3:"Content that turns followers into clients",
+      services_2_title:"Web design & digital booking",
+      services_2_desc:"A modern, fast website with a built-in booking system — clients book themselves, without a single call.",
+      services_2_li1:"Fast, mobile-optimized website",
+      services_2_li2:"Online booking 24/7",
+      services_2_li3:"Automatic reminders, fewer cancellations",
+      method_eyebrow:"How I work", method_title:"No complications. Just results.",
+      method_sub:"Three principles I build every system on — from the first conversation to the first new appointment.",
+      method_1_title:"Fast", method_1_desc:'The first system is live in a few days, not months. You see results while the competition is still "thinking about it."',
+      method_2_title:"Efficient", method_2_desc:'Every move has a clear purpose — more bookings, less manual work. Nothing superfluous, nothing "just for looks."',
+      method_3_title:"Tailored to your budget", method_3_desc:"The solution is built to the size of your salon. You pay for what actually brings you appointments — nothing more.",
+      system_eyebrow:"System in action", system_title:"How the system works for you (24/7)",
+      system_sub:"Take a look inside the automation that transforms your reception.",
+      system_1_step:"Step 01", system_1_title:"Smart flow (ManyChat)",
+      system_1_desc:"A visual message map that guides the client from the first DM to a confirmed appointment.",
+      system_2_step:"Step 02", system_2_title:"Instant calendar",
+      system_2_desc:"A synced schedule that shows clients only free slots, with no overlaps.",
+      system_3_step:"Step 03", system_3_title:"Automatic reminder",
+      system_3_desc:"The system automatically sends an SMS/WhatsApp reminder 24h in advance and reduces no-shows.",
+      google_title:"Have we already worked together?",
+      google_sub:"Share your experience with others.",
+      google_btn:"Leave a review on Google",
+      revform_eyebrow:"Client reviews", revform_title:"What premium salon owners say",
+      revform_sub:"Real client statements. New reviews go through moderation before they appear here.",
+      revform_form_title:"Leave your review",
+      revform_form_sub:"Were you my client? Share your experience — I publish it after a quick review.",
+      revform_label_name:"Full name", revform_ph_name:"e.g. Jane Smith",
+      revform_label_rating:"Rating",
+      revform_label_comment:"Comment", revform_ph_comment:"Describe how the collaboration helped you...",
+      revform_submit:"Send review",
+      msg_validation:"Please fill in your name, rating, and comment before sending.",
+      msg_sending:"Sending...",
+      msg_success:"Thank you! Your review has been sent for moderation and will be visible after admin approval.",
+      msg_fail:"Oops, sending failed. Please try again in a moment.",
+      msg_error:"Oops, there was a connection error. Check your internet and try again.",
+      faq_eyebrow:"Frequently asked questions", faq_title:"Everything you want to know before the call",
+      faq_sub:"Short, clear answers to the questions salon owners ask most often.",
+      faq_q1:"What exactly do I get in the free consultation?",
+      faq_a1:"You get a complete scan of your current website and Instagram profile. I'll show you exactly where you're losing clients and give you 3 concrete steps to fix it right away — completely free and with no obligation.",
+      faq_q2:"How much does a smart website with automation cost?",
+      faq_a2:"The price depends on the size of your salon and the complexity of the system we build. My prices are tailored to local businesses, because my goal is for your investment to pay off within the first month.",
+      faq_q3:"How quickly can the system go live?",
+      faq_a3:"We can launch the first solutions and basic message automation within 48 hours, while a complete premium website with an integrated calendar is ready in 7 to 10 days.",
+      faq_q4:"Do I have to manage the system myself after it's built?",
+      faq_a4:'No. I build the complete system turnkey and set it to run fully automatically. You also get a short, simple video training so you always stay in full control.',
+      booking_eyebrow:"Free analysis", booking_title:"Let's talk 15 minutes about your salon",
+      booking_sub:"No obligation and no sales tricks. We look at where you're losing appointments and you get a clear plan — even if we don't end up working together.",
+      booking_b1:"Completely free", booking_b2:"No obligation", booking_b3:"A concrete plan at the end of the call",
+      booking_note:"The calendar loads only on click — <b>the site opens in 0ms.</b>",
+      insta_title:"Daily business tips for salons and aesthetic centers",
+      insta_desc:'Concrete tips on marketing, scheduling, and growth — every day on my profile <span class="insta-handle">@razgovarajsanebojsom</span>.',
+      insta_cta:"Follow me on Instagram for daily business tips",
+      footer_tagline:"Digital solutions for salons and aesthetic centers",
+      cal_head:"Pick your slot", cal_loading:"Loading calendar..."
+    }
+  };
+
+  /* HTML lang atribut po jeziku (za pristupačnost i SEO) */
+  var HTML_LANG = { sr:"sr", de:"de", en:"en" };
+
+  window.__i18n = I18N;
+  window.__lang = "sr";
+
+  function applyLang(lang){
+    if(!I18N[lang]){ lang = "sr"; }
+    window.__lang = lang;
+    var dict = I18N[lang];
+
+    /* textContent prevodi */
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined){ el.textContent = dict[key]; }
+    });
+    /* innerHTML prevodi (tekst sa ugrađenim <b>/<span>) */
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-html');
+      if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
+    });
+    /* placeholder prevodi */
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
+      var key = el.getAttribute('data-i18n-ph');
+      if(dict[key] !== undefined){ el.setAttribute('placeholder', dict[key]); }
+    });
+
+    /* <html lang> */
+    document.documentElement.setAttribute('lang', HTML_LANG[lang] || 'sr');
+
+    /* Vizuelni naglasak aktivnog dugmeta */
+    document.querySelectorAll('.lang-switch button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+
+    /* Ako je već izabrano rešenje u solveru — ponovo ga iscrtaj na novom jeziku */
+    if(typeof window.__refreshSolution === 'function'){ window.__refreshSolution(); }
+
+    /* Zapamti izbor za sledeću posetu */
+    try{ localStorage.setItem('rsn_lang', lang); }catch(e){}
+  }
+
+  /* Klik na jezičke dugmiće */
+  document.querySelectorAll('.lang-switch button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      applyLang(btn.getAttribute('data-lang'));
+    });
+  });
+
+  /* Početni jezik: zapamćeni izbor -> jezik pregledača -> SR */
+  (function initLang(){
+    var saved = null;
+    try{ saved = localStorage.getItem('rsn_lang'); }catch(e){}
+    var start = saved;
+    if(!start){
+      var nav = (navigator.language || 'sr').toLowerCase();
+      if(nav.indexOf('de') === 0){ start = 'de'; }
+      else if(nav.indexOf('en') === 0){ start = 'en'; }
+      else { start = 'sr'; }
+    }
+    applyLang(start);
+  })();
+
+  /* =========================================================
      1) PROBLEM SOLVER — dinamička rešenja
      ========================================================= */
-  var solutions = [
-    {
-      tag:"Rešenje · Konverzija",
-      title:"DM automatizacija koja pretvara preglede u klijente",
-      text:"Postavljamo pametan tok poruka na Instagramu: svaki komentar i DM dobija trenutan odgovor koji vodi pravo do zakazivanja. Pregledi prestaju da budu samo brojka — postaju termini."
-    },
-    {
-      tag:"Rešenje · Automatizacija",
-      title:"Pametan kalendar i online zakazivanje",
-      text:"Klijenti sami biraju termin preko sajta ili DM-a, 24 sata dnevno. Ti prestaješ da odgovaraš na pozive tokom tretmana, a automatski podsetnici smanjuju otkazivanja."
-    },
-    {
-      tag:"Rešenje · Web",
-      title:"Nov, brz sajt sa ugrađenim zakazivanjem",
-      text:"Pravim moderan sajt optimizovan za mobilni, koji se učitava za sekundu i vodi posetioca direktno do rezervacije. Profesionalan prvi utisak koji gradi poverenje pre prvog razgovora."
-    }
-  ];
-
   var opts = document.querySelectorAll('.opt');
   var placeholder = document.getElementById('placeholder');
   var solCard = document.getElementById('solCard');
   var solTag = document.getElementById('solTag');
   var solTitle = document.getElementById('solTitle');
   var solText = document.getElementById('solText');
+  var activeSolIndex = -1; /* pamti izabrano rešenje da bi prevod radio uživo */
 
   function showSolution(i){
-    var s = solutions[i];
-    solTag.textContent = s.tag;
-    solTitle.textContent = s.title;
-    solText.textContent = s.text;
+    activeSolIndex = i;
+    var t = (window.__i18n && window.__i18n[window.__lang]) || {};
+    solTag.textContent   = t['sol_' + i + '_tag']   || '';
+    solTitle.textContent = t['sol_' + i + '_title'] || '';
+    solText.textContent  = t['sol_' + i + '_text']  || '';
     placeholder.style.display = 'none';
     solCard.classList.remove('show');
     void solCard.offsetWidth; /* retrigger transition */
     solCard.classList.add('show');
   }
+  /* Izloženo globalno da language switcher može ponovo iscrtati aktivno rešenje */
+  window.__refreshSolution = function(){
+    if(activeSolIndex > -1){ showSolution(activeSolIndex); }
+  };
 
   opts.forEach(function(btn){
     btn.addEventListener('click', function(){
@@ -1400,9 +1822,11 @@ body.cal-lock{overflow:hidden}
   reviewForm.addEventListener('submit', function(event){
     event.preventDefault();
 
+    var t = (window.__i18n && window.__i18n[window.__lang]) || {};
+
     /* jednostavna validacija */
     if(revName.value.trim() === '' || revText.value.trim() === '' || selectedRating === 0){
-      setMsg('Molim te popuni ime, ocenu i komentar pre slanja.', false);
+      setMsg(t.msg_validation || 'Molim te popuni ime, ocenu i komentar pre slanja.', false);
       return;
     }
 
@@ -1416,7 +1840,7 @@ body.cal-lock{overflow:hidden}
 
     reviewSubmit.disabled = true;
     var oldLabel = reviewSubmit.textContent;
-    reviewSubmit.textContent = 'Šaljem...';
+    reviewSubmit.textContent = t.msg_sending || 'Šaljem...';
 
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -1431,13 +1855,13 @@ body.cal-lock{overflow:hidden}
         selectedRating = 0;
         paintRating(0);
         revOcena.value = '';
-        setMsg('Hvala vam! Vaša recenzija je poslata na moderaciju i biće vidljiva nakon provere administratora.', true);
+        setMsg(t.msg_success || 'Hvala vam! Vaša recenzija je poslata na moderaciju i biće vidljiva nakon provere administratora.', true);
       } else {
-        setMsg('Ups, slanje nije uspelo. Pokušajte ponovo za koji trenutak.', false);
+        setMsg(t.msg_fail || 'Ups, slanje nije uspelo. Pokušajte ponovo za koji trenutak.', false);
       }
     })
     .catch(function(){
-      setMsg('Ups, došlo je do greške u vezi. Proverite internet i pokušajte ponovo.', false);
+      setMsg(t.msg_error || 'Ups, došlo je do greške u vezi. Proverite internet i pokušajte ponovo.', false);
     })
     .finally(function(){
       reviewSubmit.disabled = false;
