@@ -279,6 +279,35 @@ section{padding:84px 0}
 .section-head h2{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:700;margin:18px 0 14px}
 .section-head p{color:var(--muted);font-size:1.05rem}
 
+/* ============ O MENI (About) ============ */
+.about{padding-top:64px;padding-bottom:64px}
+.about-grid{
+  display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;
+  max-width:1040px;margin:0 auto;
+}
+.about-photo{position:relative}
+.about-photo img{
+  width:100%;height:auto;aspect-ratio:26/31;object-fit:cover;
+  border-radius:22px;border:1px solid var(--line-strong);
+  box-shadow:var(--shadow);background:var(--surface-2);
+}
+.about-badge{
+  position:absolute;left:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;
+  background:var(--green);color:#04241a;font-family:var(--font-display);font-weight:700;
+  font-size:.86rem;padding:9px 15px;border-radius:100px;
+  box-shadow:0 10px 26px -10px rgba(16,185,129,.7);
+}
+.about-badge svg{width:16px;height:16px;flex:none}
+.about-copy .eyebrow{margin-bottom:16px}
+.about-copy h2{font-size:clamp(1.6rem,3.2vw,2.3rem);font-weight:700;margin-bottom:16px}
+.about-copy p{color:var(--muted);font-size:1.04rem;margin-bottom:16px}
+.about-points{display:flex;flex-direction:column;gap:12px;margin:22px 0 28px}
+.about-point{display:flex;gap:11px;align-items:flex-start;font-size:.97rem;color:var(--white)}
+.about-point svg{width:19px;height:19px;color:var(--green);flex:none;margin-top:3px}
+
+/* ============ GOOGLE SECTION background ============ */
+.google-sec{background:linear-gradient(180deg,transparent,rgba(0,194,255,.04),transparent)}
+
 /* ============ PROBLEM SOLVER ============ */
 .solver{background:linear-gradient(180deg,transparent,rgba(15,23,42,.5),transparent)}
 .solver-box{
@@ -642,6 +671,10 @@ body.cal-lock{overflow:hidden}
   .hero-actions{justify-content:center}
   .hero-trust{justify-content:center}
   .hero-visual{order:-1;width:100%;max-width:440px;height:auto;min-height:440px}
+  .about-grid{grid-template-columns:1fr;gap:34px;max-width:520px}
+  .about-photo{max-width:420px;margin:0 auto}
+  .about-copy{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .about-points{align-items:flex-start;text-align:left}
   .solver-grid{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr}
   .principles{grid-template-columns:1fr}
@@ -749,6 +782,7 @@ body.cal-lock{overflow:hidden}
       <span class="handle">razgovaraj<b>sanebojsom</b></span>
     </a>
     <nav class="nav-links" id="navLinks">
+      <a href="#about" data-i18n="nav_about">O meni</a>
       <a href="#solver" data-i18n="nav_problems">Problemi</a>
       <a href="#services" data-i18n="nav_services">Usluge</a>
       <a href="#method" data-i18n="nav_method">Kako radim</a>
@@ -818,6 +852,35 @@ body.cal-lock{overflow:hidden}
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div><b data-i18n="ig_booked_title">Termin uspešno potvrđen!</b><span data-i18n="ig_booked_sub">Petak, 17:00h — Hidrafacial</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== O MENI ===== -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <div class="about-photo">
+        <img src="placeholder-profile.jpg" alt="Nebojša Vukić" loading="lazy" width="520" height="620">
+        <span class="about-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+          <span data-i18n="about_badge">Ključ u ruke</span>
+        </span>
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow"><span class="dot"></span><span data-i18n="about_eyebrow">O meni</span></span>
+        <h2 data-i18n="about_title">Digitalni arhitekta za premium salone</h2>
+        <p data-i18n="about_p1">Ne prodajem „marketing uopšteno". Projektujem i sklapam kompletan digitalni sistem recepcije — od prvog DM-a do potvrđenog termina — tako da vaš salon prima klijente i dok vi radite tretmane.</p>
+        <p data-i18n="about_p2">Radim isključivo po principu „ključ u ruke": ja postavljam automatizaciju, kalendar i sajt, testiram sve do poslednjeg detalja i predajem vam sistem koji radi sam. Vi ostajete fokusirani na ono što najbolje radite — vaše klijente.</p>
+        <div class="about-points">
+          <div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="about_pt1">Sistem projektovan za konverziju, ne za „lepotu"</span></div>
+          <div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="about_pt2">Postavka do kraja — bez tehničkih obaveza na vašoj strani</span></div>
+          <div class="about-point"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="about_pt3">Rešenje skrojeno prema veličini i budžetu salona</span></div>
+        </div>
+        <a href="#booking" class="btn btn-primary" data-cal-trigger>
+          <span data-i18n="about_cta">Zakaži besplatnu analizu</span>
+        </a>
       </div>
     </div>
   </div>
@@ -901,6 +964,46 @@ body.cal-lock{overflow:hidden}
   </div>
 </section>
 
+<!-- ===== SISTEM NA DELU ===== -->
+<section class="system" id="system">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="system_eyebrow">Sistem na delu</span></span>
+      <h2 data-i18n="system_title">Kako sistem radi za tebe (24/7)</h2>
+      <p data-i18n="system_sub">Pogledaj unutrašnjost automatizacije koja menja recepciju.</p>
+    </div>
+
+    <div class="system-grid">
+      <div class="sys-card reveal">
+        <div class="sys-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h6v6H4zM14 14h6v6h-6zM7 10v4h10M17 14v-3"/></svg>
+        </div>
+        <span class="sys-step" data-i18n="system_1_step">Korak 01</span>
+        <h3 data-i18n="system_1_title">Pametni tok (ManyChat)</h3>
+        <p data-i18n="system_1_desc">Vizuelna mapa poruka koja vodi klijenta od prvog DM-a do potvrđenog termina.</p>
+      </div>
+
+      <div class="sys-card reveal">
+        <div class="sys-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+        </div>
+        <span class="sys-step" data-i18n="system_2_step">Korak 02</span>
+        <h3 data-i18n="system_2_title">Instant kalendar</h3>
+        <p data-i18n="system_2_desc">Sinhronizovan raspored koji klijentima prikazuje samo slobodne sate bez preklapanja.</p>
+      </div>
+
+      <div class="sys-card reveal">
+        <div class="sys-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        </div>
+        <span class="sys-step" data-i18n="system_3_step">Korak 03</span>
+        <h3 data-i18n="system_3_title">Automatski podsetnik</h3>
+        <p data-i18n="system_3_desc">Sistem sam šalje SMS/WhatsApp podsetnik 24h ranije i smanjuje otkazivanja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== METHODOLOGY ===== -->
 <section id="method">
   <div class="wrap">
@@ -926,6 +1029,47 @@ body.cal-lock{overflow:hidden}
         <p data-i18n="method_3_desc">Rešenje se pravi prema veličini tvog salona. Plaćaš ono što ti stvarno donosi termine — ništa više.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== GOOGLE RECENZIJE (zamena za fiktivne recenzije) ===== -->
+<section class="google-sec" id="recenzije">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="gsec_eyebrow">Recenzije</span></span>
+      <h2 data-i18n="gsec_title">Vaše iskustvo gradi poverenje sledećeg salona</h2>
+      <p data-i18n="gsec_sub">Prava svedočanstva klijenata uskoro na ovom mestu. Struktura je spremna za unos.</p>
+    </div>
+    <!-- Skrivena struktura za buduće ručne recenzije (display:none u CSS-u) -->
+    <div class="reviews-grid reveal" id="reviewsGridManual" aria-hidden="true"></div>
+    <div class="google-review reveal">
+          <div class="g-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+            </svg>
+          </div>
+          <div class="g-stars" aria-label="5/5">
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          </div>
+          <h3 data-i18n="google_title">Da li smo već sarađivali?</h3>
+          <p data-i18n="google_sub">Podelite vaše iskustvo sa drugima.</p>
+          <a href="https://g.page/r/CdHMOVYriTV3EBM/review" class="btn btn-google-review" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+            </svg>
+            <span data-i18n="google_btn">Ostavi recenziju na Google-u</span>
+          </a>
+        </div>
   </div>
 </section>
 
@@ -1025,29 +1169,6 @@ body.cal-lock{overflow:hidden}
   </div>
 </section>
 
-<!-- ===== BOOKING ===== -->
-<section class="booking" id="booking">
-  <div class="wrap">
-    <div class="booking-box reveal">
-      <span class="eyebrow"><span class="dot"></span><span data-i18n="booking_eyebrow">Besplatna analiza</span></span>
-      <h2 data-i18n="booking_title">Popričajmo 15 minuta o tvom salonu</h2>
-      <p data-i18n="booking_sub">Bez obaveze i bez prodajnih trikova. Pogledamo gde gubiš termine i dobiješ jasan plan — čak i ako ne budemo radili zajedno.</p>
-      <div class="booking-bullets">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b1">Potpuno besplatno</span></span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b2">Bez obaveze</span></span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b3">Konkretan plan na kraju poziva</span></span>
-      </div>
-
-      <a href="#" class="btn btn-primary pulse" data-cal-trigger>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-        <span data-i18n="hero_cta_primary">Saznajte gde gubite termine (Besplatna analiza - 15min)</span>
-      </a>
-
-      <p class="booking-note" data-i18n-html="booking_note">Kalendar se učitava tek na klik — <b>sajt se otvara u 0ms.</b></p>
-    </div>
-  </div>
-</section>
-
 <!-- ===== INSTAGRAM CTA ===== -->
 <section class="insta" id="instagram">
   <div class="wrap">
@@ -1081,72 +1202,25 @@ body.cal-lock{overflow:hidden}
   </div>
 </section>
 
-<!-- ===== SISTEM NA DELU (zamena za social proof) ===== -->
-<section class="system" id="recenzije">
+<!-- ===== BOOKING ===== -->
+<section class="booking" id="booking">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow"><span class="dot"></span><span data-i18n="system_eyebrow">Sistem na delu</span></span>
-      <h2 data-i18n="system_title">Kako sistem radi za tebe (24/7)</h2>
-      <p data-i18n="system_sub">Pogledaj unutrašnjost automatizacije koja menja recepciju.</p>
-    </div>
-
-    <div class="system-grid">
-      <div class="sys-card reveal">
-        <div class="sys-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h6v6H4zM14 14h6v6h-6zM7 10v4h10M17 14v-3"/></svg>
-        </div>
-        <span class="sys-step" data-i18n="system_1_step">Korak 01</span>
-        <h3 data-i18n="system_1_title">Pametni tok (ManyChat)</h3>
-        <p data-i18n="system_1_desc">Vizuelna mapa poruka koja vodi klijenta od prvog DM-a do potvrđenog termina.</p>
+    <div class="booking-box reveal">
+      <span class="eyebrow"><span class="dot"></span><span data-i18n="booking_eyebrow">Besplatna analiza</span></span>
+      <h2 data-i18n="booking_title">Popričajmo 15 minuta o tvom salonu</h2>
+      <p data-i18n="booking_sub">Bez obaveze i bez prodajnih trikova. Pogledamo gde gubiš termine i dobiješ jasan plan — čak i ako ne budemo radili zajedno.</p>
+      <div class="booking-bullets">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b1">Potpuno besplatno</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b2">Bez obaveze</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="booking_b3">Konkretan plan na kraju poziva</span></span>
       </div>
 
-      <div class="sys-card reveal">
-        <div class="sys-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-        </div>
-        <span class="sys-step" data-i18n="system_2_step">Korak 02</span>
-        <h3 data-i18n="system_2_title">Instant kalendar</h3>
-        <p data-i18n="system_2_desc">Sinhronizovan raspored koji klijentima prikazuje samo slobodne sate bez preklapanja.</p>
-      </div>
-
-      <div class="sys-card reveal">
-        <div class="sys-ico">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0"/></svg>
-        </div>
-        <span class="sys-step" data-i18n="system_3_step">Korak 03</span>
-        <h3 data-i18n="system_3_title">Automatski podsetnik</h3>
-        <p data-i18n="system_3_desc">Sistem sam šalje SMS/WhatsApp podsetnik 24h ranije i smanjuje otkazivanja.</p>
-      </div>
-    </div>
-
-    <!-- ===== GOOGLE RECENZIJE ===== -->
-    <div class="google-review reveal">
-      <div class="g-badge" aria-hidden="true">
-        <svg viewBox="0 0 24 24">
-          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
-          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
-          <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>
-          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
-        </svg>
-      </div>
-      <div class="g-stars" aria-label="5/5">
-        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-        <svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
-      </div>
-      <h3 data-i18n="google_title">Da li smo već sarađivali?</h3>
-      <p data-i18n="google_sub">Podelite vaše iskustvo sa drugima.</p>
-      <a href="https://g.page/r/CdHMOVYriTV3EBM/review" class="btn btn-google-review" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
-          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
-          <path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>
-          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.06l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
-        </svg>
-        <span data-i18n="google_btn">Ostavi recenziju na Google-u</span>
+      <a href="#" class="btn btn-primary pulse" data-cal-trigger>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span data-i18n="hero_cta_primary">Saznajte gde gubite termine (Besplatna analiza - 15min)</span>
       </a>
+
+      <p class="booking-note" data-i18n-html="booking_note">Kalendar se učitava tek na klik — <b>sajt se otvara u 0ms.</b></p>
     </div>
   </div>
 </section>
@@ -1202,9 +1276,21 @@ body.cal-lock{overflow:hidden}
   var I18N = {
     sr: {
       /* Navigacija */
-      nav_problems:"Problemi", nav_services:"Usluge", nav_method:"Kako radim",
+      nav_about:"O meni", nav_problems:"Problemi", nav_services:"Usluge", nav_method:"Kako radim",
       nav_reviews:"Recenzije", nav_faq:"Pitanja", nav_contact:"Kontakt",
       nav_cta:"Zakaži besplatnu analizu",
+      /* O meni */
+      about_eyebrow:"O meni", about_badge:"Ključ u ruke",
+      about_title:"Digitalni arhitekta za premium salone",
+      about_p1:"Ne prodajem „marketing uopšteno\". Projektujem i sklapam kompletan digitalni sistem recepcije — od prvog DM-a do potvrđenog termina — tako da vaš salon prima klijente i dok vi radite tretmane.",
+      about_p2:"Radim isključivo po principu „ključ u ruke\": ja postavljam automatizaciju, kalendar i sajt, testiram sve do poslednjeg detalja i predajem vam sistem koji radi sam. Vi ostajete fokusirani na ono što najbolje radite — vaše klijente.",
+      about_pt1:"Sistem projektovan za konverziju, ne za „lepotu\"",
+      about_pt2:"Postavka do kraja — bez tehničkih obaveza na vašoj strani",
+      about_pt3:"Rešenje skrojeno prema veličini i budžetu salona",
+      about_cta:"Zakaži besplatnu analizu",
+      /* Google sekcija (head) */
+      gsec_eyebrow:"Recenzije", gsec_title:"Vaše iskustvo gradi poverenje sledećeg salona",
+      gsec_sub:"Prava svedočanstva klijenata uskoro na ovom mestu. Struktura je spremna za unos.",
       /* Hero */
       hero_eyebrow:"Digitalna rešenja za salone i estetske centre",
       hero_title:'Popunite preostalih <span class="hl">30% kapaciteta salona</span> bez ijednog telefonskog poziva.',
@@ -1227,12 +1313,12 @@ body.cal-lock{overflow:hidden}
       solver_opt_3:"Sajt nam je star, spor ili ga nemamo",
       solver_placeholder:"Izaberi svoju situaciju levo — rešenje se pojavljuje ovde.",
       solver_btn:"Zakaži termin za ovo rešenje",
-      sol_0_tag:"Rešenje · Konverzija", sol_0_title:"DM automatizacija koja pretvara preglede u klijente",
-      sol_0_text:"Postavljamo pametan tok poruka na Instagramu: svaki komentar i DM dobija trenutan odgovor koji vodi pravo do zakazivanja. Pregledi prestaju da budu samo brojka — postaju termini.",
-      sol_1_tag:"Rešenje · Automatizacija", sol_1_title:"Pametan kalendar i online zakazivanje",
-      sol_1_text:"Klijenti sami biraju termin preko sajta ili DM-a, 24 sata dnevno. Ti prestaješ da odgovaraš na pozive tokom tretmana, a automatski podsetnici smanjuju otkazivanja.",
-      sol_2_tag:"Rešenje · Web", sol_2_title:"Nov, brz sajt sa ugrađenim zakazivanjem",
-      sol_2_text:"Pravim moderan sajt optimizovan za mobilni, koji se učitava za sekundu i vodi posetioca direktno do rezervacije. Profesionalan prvi utisak koji gradi poverenje pre prvog razgovora.",
+      sol_0_tag:"Rešenje · Konverzija", sol_0_title:"ManyChat automatizacija koja kvalifikuje klijenta u DM-u",
+      sol_0_text:"Fokus na ManyChat automatizaciju koja odmah u DM-u kvalifikuje klijenta i šalje mu link za zakazivanje dok je još zagrejan. Pregledi prestaju da budu samo brojka — postaju termini.",
+      sol_1_tag:"Rešenje · Automatizacija", sol_1_title:"Digitalna recepcija i online kalendar 24/7",
+      sol_1_text:"Implementacija digitalne recepcije i online kalendara koji radi 24/7. Smanjuje vreme provedeno na telefonu za 80% — klijenti biraju slobodan termin sami, bez poziva.",
+      sol_2_tag:"Rešenje · Web", sol_2_title:"Ultra-brz sajt sa fokusom na rezervaciju",
+      sol_2_text:"Izrada ultra-brzog sajta optimizovanog za mobilne telefone, sa direktnim fokusom na konverziju i instant rezervaciju termina. Profesionalan prvi utisak koji gradi poverenje pre prvog razgovora.",
       /* Usluge */
       services_eyebrow:"Usluge", services_title:"Dva sistema koja donose termine",
       services_sub:'Ne prodajem „marketing uopšteno". Postavljam dva konkretna sistema koja rade dok ti radiš svoj posao.',
@@ -1305,9 +1391,19 @@ body.cal-lock{overflow:hidden}
     },
 
     de: {
-      nav_problems:"Probleme", nav_services:"Leistungen", nav_method:"Arbeitsweise",
+      nav_about:"Über mich", nav_problems:"Probleme", nav_services:"Leistungen", nav_method:"Arbeitsweise",
       nav_reviews:"Bewertungen", nav_faq:"Fragen", nav_contact:"Kontakt",
       nav_cta:"Kostenlose Analyse buchen",
+      about_eyebrow:"Über mich", about_badge:"Schlüsselfertig",
+      about_title:"Digitaler Architekt für Premium-Salons",
+      about_p1:"Ich verkaufe kein „Marketing im Allgemeinen\". Ich entwerfe und baue ein komplettes digitales Rezeptionssystem – von der ersten DM bis zum bestätigten Termin – damit Ihr Salon Kunden empfängt, während Sie behandeln.",
+      about_p2:"Ich arbeite ausschließlich schlüsselfertig: Ich richte Automatisierung, Kalender und Website ein, teste alles bis ins letzte Detail und übergebe Ihnen ein System, das von selbst läuft. Sie bleiben fokussiert auf das, was Sie am besten können – Ihre Kunden.",
+      about_pt1:"Ein System für Conversion gebaut, nicht „zur Zierde\"",
+      about_pt2:"Komplette Einrichtung – kein technischer Aufwand für Sie",
+      about_pt3:"Lösung zugeschnitten auf Größe und Budget des Salons",
+      about_cta:"Kostenlose Analyse buchen",
+      gsec_eyebrow:"Bewertungen", gsec_title:"Ihre Erfahrung schafft Vertrauen für den nächsten Salon",
+      gsec_sub:"Echte Kundenstimmen erscheinen bald an dieser Stelle. Die Struktur ist bereit für die Eingabe.",
       hero_eyebrow:"Digitale Lösungen für Salons und Kosmetikstudios",
       hero_title:'Füllen Sie die restlichen <span class="hl">30% Ihrer Salonkapazität</span> – ganz ohne Telefonate.',
       hero_sub:"Ich helfe Premium-Salons und Kosmetikstudios, ihre Rezeption zu digitalisieren, das Marketing zu automatisieren und Instagram-Views in gebuchte Termine zu verwandeln.",
@@ -1327,12 +1423,12 @@ body.cal-lock{overflow:hidden}
       solver_opt_3:"Unsere Website ist alt, langsam – oder wir haben keine",
       solver_placeholder:"Wählen Sie links Ihre Situation – die Lösung erscheint hier.",
       solver_btn:"Termin für diese Lösung buchen",
-      sol_0_tag:"Lösung · Conversion", sol_0_title:"DM-Automatisierung, die Views in Kunden verwandelt",
-      sol_0_text:"Wir richten einen smarten Nachrichtenfluss auf Instagram ein: Jeder Kommentar und jede DM erhält eine sofortige Antwort, die direkt zur Buchung führt. Views bleiben nicht nur eine Zahl – sie werden zu Terminen.",
-      sol_1_tag:"Lösung · Automatisierung", sol_1_title:"Smarter Kalender und Online-Buchung",
-      sol_1_text:"Kunden wählen ihren Termin selbst über die Website oder per DM – rund um die Uhr. Sie beantworten keine Anrufe mehr während der Behandlung, und automatische Erinnerungen reduzieren Absagen.",
-      sol_2_tag:"Lösung · Web", sol_2_title:"Neue, schnelle Website mit integrierter Buchung",
-      sol_2_text:"Ich erstelle eine moderne, für Mobilgeräte optimierte Website, die in Sekunden lädt und Besucher direkt zur Buchung führt. Ein professioneller erster Eindruck, der Vertrauen schafft – noch vor dem ersten Gespräch.",
+      sol_0_tag:"Lösung · Conversion", sol_0_title:"ManyChat-Automatisierung, die den Kunden per DM qualifiziert",
+      sol_0_text:"Fokus auf eine ManyChat-Automatisierung, die den Kunden direkt in der DM qualifiziert und ihm den Buchungslink schickt, solange er noch interessiert ist. Views bleiben nicht nur eine Zahl – sie werden zu Terminen.",
+      sol_1_tag:"Lösung · Automatisierung", sol_1_title:"Digitale Rezeption und Online-Kalender rund um die Uhr",
+      sol_1_text:"Einführung einer digitalen Rezeption und eines Online-Kalenders, der 24/7 läuft. Reduziert die Telefonzeit um 80 % – Kunden wählen ihren freien Termin selbst, ganz ohne Anruf.",
+      sol_2_tag:"Lösung · Web", sol_2_title:"Ultraschnelle Website mit Fokus auf Buchung",
+      sol_2_text:"Erstellung einer ultraschnellen, für Mobilgeräte optimierten Website mit direktem Fokus auf Conversion und sofortige Terminbuchung. Ein professioneller erster Eindruck, der Vertrauen schafft – noch vor dem ersten Gespräch.",
       services_eyebrow:"Leistungen", services_title:"Zwei Systeme, die Termine bringen",
       services_sub:'Ich verkaufe kein „Marketing im Allgemeinen". Ich richte zwei konkrete Systeme ein, die arbeiten, während Sie Ihre Arbeit machen.',
       services_1_title:"Social Media & DM-Systeme",
@@ -1396,9 +1492,19 @@ body.cal-lock{overflow:hidden}
     },
 
     en: {
-      nav_problems:"Problems", nav_services:"Services", nav_method:"How I work",
+      nav_about:"About", nav_problems:"Problems", nav_services:"Services", nav_method:"How I work",
       nav_reviews:"Reviews", nav_faq:"FAQ", nav_contact:"Contact",
       nav_cta:"Book a free analysis",
+      about_eyebrow:"About me", about_badge:"Turnkey",
+      about_title:"Digital architect for premium salons",
+      about_p1:"I don't sell \"marketing in general.\" I design and assemble a complete digital reception system — from the first DM to a confirmed appointment — so your salon takes clients even while you're doing treatments.",
+      about_p2:"I work exclusively turnkey: I set up the automation, calendar, and website, test everything down to the last detail, and hand you a system that runs itself. You stay focused on what you do best — your clients.",
+      about_pt1:"A system built for conversion, not \"for looks\"",
+      about_pt2:"Full setup — no technical obligations on your side",
+      about_pt3:"A solution tailored to your salon's size and budget",
+      about_cta:"Book a free analysis",
+      gsec_eyebrow:"Reviews", gsec_title:"Your experience builds trust for the next salon",
+      gsec_sub:"Real client testimonials coming soon in this spot. The structure is ready for input.",
       hero_eyebrow:"Digital solutions for salons and aesthetic centers",
       hero_title:"Fill the remaining <span class=\"hl\">30% of your salon's capacity</span> without a single phone call.",
       hero_sub:"I help beauty salons and aesthetic centers digitalize their reception, automate marketing, and turn Instagram views into paid appointments.",
@@ -1418,12 +1524,12 @@ body.cal-lock{overflow:hidden}
       solver_opt_3:"Our website is old, slow, or we don't have one",
       solver_placeholder:"Pick your situation on the left — the solution appears here.",
       solver_btn:"Book an appointment for this solution",
-      sol_0_tag:"Solution · Conversion", sol_0_title:"DM automation that turns views into clients",
-      sol_0_text:"We set up a smart message flow on Instagram: every comment and DM gets an instant reply that leads straight to booking. Views stop being just a number — they become appointments.",
-      sol_1_tag:"Solution · Automation", sol_1_title:"Smart calendar and online booking",
-      sol_1_text:"Clients pick their own slot via the website or DM, 24 hours a day. You stop answering calls during treatments, and automatic reminders reduce cancellations.",
-      sol_2_tag:"Solution · Web", sol_2_title:"A new, fast website with built-in booking",
-      sol_2_text:"I build a modern, mobile-optimized website that loads in a second and leads visitors straight to booking. A professional first impression that builds trust before the first conversation.",
+      sol_0_tag:"Solution · Conversion", sol_0_title:"ManyChat automation that qualifies the client in the DM",
+      sol_0_text:"A focus on ManyChat automation that instantly qualifies the client right in the DM and sends the booking link while they're still warm. Views stop being just a number — they become appointments.",
+      sol_1_tag:"Solution · Automation", sol_1_title:"Digital reception and online calendar 24/7",
+      sol_1_text:"Implementing a digital reception and an online calendar that runs 24/7. Cuts time spent on the phone by 80% — clients pick a free slot themselves, without a call.",
+      sol_2_tag:"Solution · Web", sol_2_title:"Ultra-fast website focused on booking",
+      sol_2_text:"Building an ultra-fast, mobile-optimized website with a direct focus on conversion and instant appointment booking. A professional first impression that builds trust before the first conversation.",
       services_eyebrow:"Services", services_title:"Two systems that bring in appointments",
       services_sub:'I don\'t sell "marketing in general." I set up two concrete systems that work while you do your job.',
       services_1_title:"Social media & DM systems",
