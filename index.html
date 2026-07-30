@@ -405,6 +405,8 @@ section{padding:84px 0}
 .rating-input button.on svg{fill:var(--cyan)}
 
 .review-form-wrap .btn{width:100%;margin-top:6px}
+/* Honeypot polje — skriveno od korisnika, vidljivo samo botovima */
+.hp-field{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;pointer-events:none}
 .form-msg{
   margin-top:18px;padding:14px 16px;border-radius:var(--radius-sm);
   background:var(--green-soft);border:1px solid rgba(16,185,129,.4);
@@ -846,41 +848,52 @@ body.cal-lock{overflow:hidden}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow"><span class="dot"></span>Recenzije klijenata</span>
-      <h2>Saloni koji su prestali da gube termine</h2>
+      <h2>Šta kažu vlasnici premium salona</h2>
       <p>Prave izjave klijenata. Nove recenzije prolaze kroz moderaciju pre nego što se pojave ovde.</p>
     </div>
 
     <!-- Recenzije se dinamički renderuju iz JS niza `odobreneRecenzije` -->
     <div class="reviews-grid reveal" id="reviewsGrid"></div>
 
-    <!-- Forma za nove recenzije -->
+    <!-- Forma za nove recenzije (Web3Forms) -->
     <div class="review-form-wrap reveal">
       <h3>Ostavi svoju recenziju</h3>
       <p class="form-sub">Bio si moj klijent? Podeli iskustvo — objavljujem je nakon kratke provere.</p>
 
-      <div class="field">
-        <label for="revName">Ime i prezime</label>
-        <input type="text" id="revName" name="ime" placeholder="npr. Milica Jovanović" autocomplete="name">
-      </div>
+      <form id="reviewForm" novalidate>
+        <!-- Web3Forms Access Key -->
+        <input type="hidden" name="access_key" value="d5d56ebf-4540-44b2-a0d8-21c63134e1a5">
+        <input type="hidden" name="subject" value="Nova recenzija za moderaciju — razgovarajsanebojsom">
+        <input type="hidden" name="from_name" value="Sajt razgovarajsanebojsom">
+        <!-- Vrednost ocene (popunjava JS iz zvezdica) -->
+        <input type="hidden" name="ocena" id="revOcena" value="">
+        <!-- Honeypot protiv spama (skriveno od korisnika) -->
+        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-      <div class="field">
-        <label>Ocena</label>
-        <div class="rating-input" id="ratingInput" role="radiogroup" aria-label="Ocena od 1 do 5 zvezdica">
-          <button type="button" data-val="1" aria-label="1 zvezdica"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
-          <button type="button" data-val="2" aria-label="2 zvezdice"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
-          <button type="button" data-val="3" aria-label="3 zvezdice"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
-          <button type="button" data-val="4" aria-label="4 zvezdice"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
-          <button type="button" data-val="5" aria-label="5 zvezdica"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
+        <div class="field">
+          <label for="revName">Ime i prezime</label>
+          <input type="text" id="revName" name="ime" placeholder="npr. Milica Jovanović" autocomplete="name" required>
         </div>
-      </div>
 
-      <div class="field">
-        <label for="revText">Komentar</label>
-        <textarea id="revText" name="komentar" rows="4" placeholder="Opiši kako ti je saradnja pomogla..."></textarea>
-      </div>
+        <div class="field">
+          <label>Ocena</label>
+          <div class="rating-input" id="ratingInput" role="radiogroup" aria-label="Ocena od 1 do 5 zvezdica">
+            <button type="button" data-val="1" aria-label="1 zvezdica"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
+            <button type="button" data-val="2" aria-label="2 zvezdice"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
+            <button type="button" data-val="3" aria-label="3 zvezdice"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
+            <button type="button" data-val="4" aria-label="4 zvezdice"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
+            <button type="button" data-val="5" aria-label="5 zvezdica"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg></button>
+          </div>
+        </div>
 
-      <button type="button" class="btn btn-primary" id="reviewSubmit">Pošalji recenziju</button>
-      <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+        <div class="field">
+          <label for="revText">Komentar</label>
+          <textarea id="revText" name="komentar" rows="4" placeholder="Opiši kako ti je saradnja pomogla..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="reviewSubmit">Pošalji recenziju</button>
+        <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -1363,35 +1376,73 @@ body.cal-lock{overflow:hidden}
   });
   ratingInput.addEventListener('mouseleave', function(){ paintRating(selectedRating); });
 
-  /* Slanje forme — prazni polja i ispisuje poruku o moderaciji.
-     Napomena: bez backend-a, recenzija se NE objavljuje automatski;
-     admin je ručno prepisuje u niz `odobreneRecenzije`. */
+  /* Slanje forme — presreće submit, šalje recenziju preko Web3Forms na email
+     (moderacija), prazni polja i ispisuje poruku. Recenzija se NE objavljuje
+     automatski: admin je ručno prepisuje u niz `odobreneRecenzije` nakon mejla.
+     Access Key stoji u skrivenom polju <input name="access_key"> u formi. */
+
+  var reviewForm = document.getElementById('reviewForm');
   var revName = document.getElementById('revName');
   var revText = document.getElementById('revText');
+  var revOcena = document.getElementById('revOcena');
   var reviewSubmit = document.getElementById('reviewSubmit');
   var formMsg = document.getElementById('formMsg');
 
-  reviewSubmit.addEventListener('click', function(){
-    /* jednostavna validacija */
-    if(revName.value.trim() === '' || revText.value.trim() === '' || selectedRating === 0){
-      formMsg.textContent = 'Molim te popuni ime, ocenu i komentar pre slanja.';
-      formMsg.style.background = 'rgba(0,194,255,.12)';
-      formMsg.style.borderColor = 'rgba(0,194,255,.4)';
-      formMsg.classList.add('show');
-      return;
-    }
-    /* isprazni formu */
-    revName.value = '';
-    revText.value = '';
-    selectedRating = 0;
-    paintRating(0);
-    /* poruka o moderaciji */
-    formMsg.style.background = 'var(--green-soft)';
-    formMsg.style.borderColor = 'rgba(16,185,129,.4)';
-    formMsg.textContent = 'Hvala vam! Vaša recenzija je poslata na moderaciju i biće vidljiva nakon provere administratora.';
+  function setMsg(text, ok){
+    formMsg.style.background = ok ? 'var(--green-soft)' : 'rgba(0,194,255,.12)';
+    formMsg.style.borderColor = ok ? 'rgba(16,185,129,.4)' : 'rgba(0,194,255,.4)';
+    formMsg.textContent = text;
     formMsg.classList.remove('show');
     void formMsg.offsetWidth;
     formMsg.classList.add('show');
+  }
+
+  reviewForm.addEventListener('submit', function(event){
+    event.preventDefault();
+
+    /* jednostavna validacija */
+    if(revName.value.trim() === '' || revText.value.trim() === '' || selectedRating === 0){
+      setMsg('Molim te popuni ime, ocenu i komentar pre slanja.', false);
+      return;
+    }
+
+    /* upiši izabranu ocenu u skriveno polje pre slanja */
+    revOcena.value = selectedRating + ' / 5';
+
+    /* prikupi sva polja forme (uključujući access_key iz skrivenog inputa) */
+    var formData = new FormData(reviewForm);
+    var payload = {};
+    formData.forEach(function(value, key){ payload[key] = value; });
+
+    reviewSubmit.disabled = true;
+    var oldLabel = reviewSubmit.textContent;
+    reviewSubmit.textContent = 'Šaljem...';
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(data){
+      if(data && data.success){
+        /* isprazni formu */
+        reviewForm.reset();
+        selectedRating = 0;
+        paintRating(0);
+        revOcena.value = '';
+        setMsg('Hvala vam! Vaša recenzija je poslata na moderaciju i biće vidljiva nakon provere administratora.', true);
+      } else {
+        setMsg('Ups, slanje nije uspelo. Pokušajte ponovo za koji trenutak.', false);
+      }
+    })
+    .catch(function(){
+      setMsg('Ups, došlo je do greške u vezi. Proverite internet i pokušajte ponovo.', false);
+    })
+    .finally(function(){
+      reviewSubmit.disabled = false;
+      reviewSubmit.textContent = oldLabel;
+    });
   });
 
   /* =========================================================
